@@ -12,6 +12,7 @@ services:
         ports:
             - '${APP_PORT:-80}:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+            - '${STORYBOOK_PORT:-6006}:${STORYBOOK_PORT:-6006}'
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1

@@ -1,0 +1,25 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 118" width="202" height="118">
+	<title>image</title>
+	<defs>
+		<linearGradient id="g1" x1="201.3" y1="-8.9" x2=".4" y2="104.5" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#ff5caa"/>
+			<stop offset="1" stop-color="#ff4e62"/>
+		</linearGradient>
+		<linearGradient id="g2" x1="201.3" y1="-8.9" x2=".4" y2="104.5" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#ff5caa"/>
+			<stop offset="1" stop-color="#ff4e62"/>
+		</linearGradient>
+		<linearGradient id="g3" x1="201.3" y1="-8.9" x2=".4" y2="104.5" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#ff5caa"/>
+			<stop offset="1" stop-color="#ff4e62"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+		.s1 { fill: url(#g2) } 
+		.s2 { fill: url(#g3) } 
+	</style>
+	<path id="Layer" class="s0" d="m0.4 117.1l37.1-94.9c5.3-13.4 18.2-22.2 32.5-22.2h22.4l-37.1 94.9c-5.2 13.4-18.1 22.2-32.5 22.2z" />
+	<path id="Layer" class="s1" d="m54.9 117.1l37.1-94.9c5.2-13.4 18.1-22.2 32.5-22.2h22.3l-37.1 94.9c-5.2 13.4-18.1 22.2-32.5 22.2z" />
+	<path id="Layer" class="s2" d="m109.3 117.1l37.1-94.9c5.2-13.4 18.1-22.2 32.5-22.2h22.4l-37.1 94.9c-5.3 13.4-18.2 22.2-32.5 22.2z" />
+</svg>

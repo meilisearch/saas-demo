@@ -5,10 +5,16 @@
 - PHP 8.2
 - Laravel 10
 - TailwindCSS
-- DaisyUI
+- [HyperUI](https://www.hyperui.dev/)
 ## Development
 
-This project uses [Sail](https://laravel.com/docs/10.x/sail#executing-sail-commands) for local development.
+This project uses [Sail](https://laravel.com/docs/10.x/sail) for local development using Docker. 
+
+Launch Docker services:
+
+```sh
+sail up
+```
 
 Launch storybook using Blast:
 

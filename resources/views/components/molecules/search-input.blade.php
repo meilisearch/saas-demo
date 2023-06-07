@@ -1,9 +1,7 @@
 <div class="relative">
-  <x-atoms.input placeholder="Search..."></x-atoms.input>
+    <x-atoms.input placeholder="Search..."></x-atoms.input>
 
-  <span
-    class="absolute inset-y-0 p-2 text-gray-600 rounded-r-lg end-0"
-  >
-    <x-atoms.search-icon></x-atoms.search-icon>
-  </span>
+    <span class="end-0 absolute inset-y-0 rounded-r-lg p-2 text-gray-400">
+        <x-atoms.search-icon></x-atoms.search-icon>
+    </span>
 </div>

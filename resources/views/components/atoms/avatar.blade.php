@@ -1,8 +1,6 @@
-@props([
-    'imageUrl',
-])
+@props(['imageUrl'])
 
 
-<div class="w-8 h-8 overflow-hidden rounded-full">
-  <img src="{{ $imageUrl }}" />
+<div class="h-10 w-10 overflow-hidden rounded-full">
+    <img src="{{ $imageUrl }}" class="object-cover" />
 </div>

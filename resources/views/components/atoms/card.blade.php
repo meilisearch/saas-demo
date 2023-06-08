@@ -1,13 +1,6 @@
-@props([
-'cardTitle',
-'cardBody',
-'cardFooter'
-])
+@props(['cardTitle', 'cardBody', 'cardFooter'])
 
-<a
-href="#"
-class="relative block overflow-hidden rounded-md border border-gray-200 p-4 sm:p-6 lg:p-8"
->
+<a href="#" class="relative block overflow-hidden rounded-md border border-gray-200 p-4 sm:p-6 lg:p-8">
     <div class="sm:flex sm:justify-between sm:gap-4">
         <div>
             <h3 class="text-lg font-bold text-gray-900 sm:text-xl">

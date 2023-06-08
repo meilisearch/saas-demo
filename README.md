@@ -32,3 +32,6 @@ sail artisan blast:launch
 
 > Added `SHELL` environment variable to Docker service to handle [Webpack reloading](https://github.com/area17/blast/issues/22).
 
+## Contributing
+
+This project uses the [Blade Formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter) VS code extension to format `.blade.php` files.

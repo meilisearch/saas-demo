@@ -8,6 +8,5 @@
     'argTypes' => [],
 ])
 
-<x-organisms.navbar avatar-url="{{ $avatarUrl }}" organization-logo-url="{{ $organizationLogoUrl }}"
-    organization-name="{{ $organizationName }}">
+<x-organisms.navbar organization-logo-url="{{ $organizationLogoUrl }}" organization-name="{{ $organizationName }}">
 </x-organisms.navbar>

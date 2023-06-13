@@ -5,6 +5,8 @@
 - PHP 8.2
 - Laravel 10
 - TailwindCSS
+- Icons from [Heroicons](https://heroicons.com/)
+- Social Media icons from [icons8](https://icons8.com/icons/collections/EnE9mEHAiX2D)
 - [HyperUI](https://www.hyperui.dev/)
 ## Development
 

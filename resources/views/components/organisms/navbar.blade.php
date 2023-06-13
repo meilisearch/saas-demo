@@ -13,8 +13,16 @@
 
         <x-molecules.search-input></x-molecules.search-input>
 
-        <div class="items-center">
-            {{-- Links to Twitter, Github, etc. --}}
+        <div class="flex items-center gap-4">
+            <a href="https://discord.gg/meilisearch" target="_blank" class="text-gray-400">
+                <x-atoms.discord-icon></x-atoms.discord-icon>
+            </a>
+            <a href="https://twitter.com/meilisearch" target="_blank" class="text-gray-400">
+                <x-atoms.twitter-icon></x-atoms.twitter-icon>
+            </a>
+            <a href="https://github.com/meilisearch/saas-demo" target="_blank" class="text-gray-400">
+                <x-atoms.github-icon></x-atoms.github-icon>
+            </a>
         </div>
     </div>
 </header>

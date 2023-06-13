@@ -1,3 +1,5 @@
+@props(['title'])
+
 <x-atoms.card>
     <div class="sm:flex sm:justify-start sm:gap-4 items-center">
             {{ $picture }}

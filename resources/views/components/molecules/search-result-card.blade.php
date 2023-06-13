@@ -1,14 +1,19 @@
 <x-atoms.card>
     <div class="sm:flex sm:justify-start sm:gap-4 items-center">
-            {{ $picture }}
-        <h3 class="text-base font-bold text-gray-900 sm:text-xl">
-            {{ $title }}
-        </h3>
+        {{ $picture }}
+        <div class="flex flex-col">
+            <h3 class="text-base font-bold text-gray-900 sm:text-base">
+                {{ $title }}
+            </h3>
+            <p class="text-sm">
+                {{ $subtitle}}
+            </p>
+        </div>
     </div>
 
     <div class="mt-4">
-        <p class="max-w-[40ch] text-sm text-gray-500">
+        <div class="text-sm text-gray-700">
             {{ $slot }}
-        </p>
+        </div>
     </div>
 </x-atoms.card>

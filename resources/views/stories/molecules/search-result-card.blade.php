@@ -13,6 +13,9 @@
     <x-slot:title>
         Title
     </x-slot>
+    <x-slot:subtitle>
+        Subtitle
+    </x-slot>
     <x-slot:picture>
         <x-atoms.organization-logo :logo-url="Vite::asset('resources/assets/meilisearch-logo.svg')" :organization-name="$organizationName"></x-atoms.organization-logo>
     </x-slot>

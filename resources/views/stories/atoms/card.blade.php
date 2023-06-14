@@ -1,12 +1,11 @@
 @storybook([
     'name' => 'Card',
     'args' => [
-        'cardTitle' => 'Title',
-        'cardBody' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos dicta ad at nesciunt corrupti!',
-        'cardFooter' => 'Footer',
+        'href' => '#'
     ],
     'argTypes' => [],
 ])
 
-<x-atoms.card :$cardTitle :$cardBody :$cardFooter>
+<x-atoms.card href="{{ $href }}">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, velit dignissimos! Impedit suscipit facere rem sed optio dolorem libero quo, ut veritatis est enim ipsam, iste maxime. Ipsam, saepe ipsa?</p>
 </x-atoms.card>

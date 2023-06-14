@@ -11,7 +11,7 @@
     </x-slot:subtitle>
 
     <div class="flex items-center">
-        <x-atoms.user-group-icon class="mr-2"></x-atoms.user-group-icon>
+        <x-atoms.contact-icon class="mr-2"></x-atoms.contact-icon>
         {{ $associatedContactsNumber }}
     </div>
 </x-molecules.search-result-card>

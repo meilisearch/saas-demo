@@ -16,10 +16,22 @@ class HomeControllerTest extends TestCase
      */
     public function itLogsUser1ByDefault(): void
     {
-        $this->seedUsers();
+        $this->seed();
         $user = User::findById(1);
         $this->assertGuest();
         $this->get('/')->assertSee($user->name);
         $this->assertAuthenticatedAs($user);
+    }
+
+    /**
+     * @test
+     */
+    public function itDisplaysTheUserOrganization(): void
+    {
+        $this->seed();
+        $user = User::findById(1);
+        $this->actingAs($user)
+            ->get('/')
+            ->assertSee($user->organization->name);
     }
 }

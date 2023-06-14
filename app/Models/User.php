@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return User::where('id', $id)->firstOrFail();
     }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
 }

@@ -1,4 +1,4 @@
-@props(['userAvatarUrl', 'userName', 'userEmail'])
+@props(['userAvatarUrl', 'userName', 'userEmail', 'otherUserEmail'])
 
 <div class="border-e -mt-16 flex h-screen flex-col justify-between bg-white pt-16">
     <div class="px-4 py-6">
@@ -28,16 +28,20 @@
     </div>
 
     <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
-        <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
-            <x-atoms.avatar image-url="{{ $userAvatarUrl }}"></x-atoms.avatar>
+        <form action="/login" method="POST">
+            @csrf
+            <input type="hidden" name="email" value="{{ $otherUserEmail }}">
+            <button type="submit" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
+                <x-atoms.avatar image-url="{{ $userAvatarUrl }}"></x-atoms.avatar>
 
-            <div>
-                <p class="text-xs">
-                    <strong class="block font-medium">{{ $userName }}</strong>
+                <div class="text-left">
+                    <p class="text-xs">
+                        <strong class="block font-medium">{{ $userName }}</strong>
 
-                    <span> {{ $userEmail }} </span>
-                </p>
-            </div>
-        </a>
+                        <span> {{ $userEmail }} </span>
+                    </p>
+                </div>
+            </button>
+        </form>
     </div>
 </div>

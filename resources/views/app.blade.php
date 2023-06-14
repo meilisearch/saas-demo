@@ -17,8 +17,8 @@
 
 <body>
     <x-layouts.base user-avatar-url="{{ $userAvatarUrl }}" user-name="{{ $userName }}"
-        user-email="{{ $userEmail }}" organization-logo-url="{{ $organizationLogoUrl }}"
-        organization-name="{{ $organizationName }}">
+        user-email="{{ $userEmail }}" other-user-email="{{ $otherUserEmail }}"
+        organization-logo-url="{{ $organizationLogoUrl }}" organization-name="{{ $organizationName }}">
         @yield('content')
     </x-layouts.base>
 </body>

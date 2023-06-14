@@ -185,4 +185,19 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Seeded users
+    |--------------------------------------------------------------------------
+    */
+    'seeders' => [
+        'user1' => [
+            'email' => env('APP_USER1_EMAIL'),
+            'password' => env('APP_USER1_PASSWORD')
+        ],
+        'user2' => [
+            'email' => env('APP_USER2_EMAIL'),
+            'password' => env('APP_USER2_PASSWORD')
+        ],
+    ],
 ];

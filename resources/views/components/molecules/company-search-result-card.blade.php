@@ -8,10 +8,9 @@
         {{ $companyName }}
     </x-slot:title>
     <x-slot:subtitle>
+        <div class="flex items-center">
+            <x-atoms.contact-icon class="mr-2"></x-atoms.contact-icon>
+            {{ $associatedContactsNumber }}
+        </div>
     </x-slot:subtitle>
-
-    <div class="flex items-center">
-        <x-atoms.contact-icon class="mr-2"></x-atoms.contact-icon>
-        {{ $associatedContactsNumber }}
-    </div>
 </x-molecules.search-result-card>

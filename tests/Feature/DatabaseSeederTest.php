@@ -20,7 +20,7 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
-    public function itSeedsTwoOrganizations(): void
+    public function itCreatesTwoOrganizations(): void
     {
         $this->assertCount(2, Organization::all());
     }
@@ -28,7 +28,7 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
-    public function itSeedsTwoUsersFromConfiguration(): void
+    public function itCreatesTwoUsersFromConfiguration(): void
     {
         $this->assertDatabaseHas('users', [
             'email' => config('app.seeders.user1.email'),
@@ -40,5 +40,15 @@ class DatabaseSeederTest extends TestCase
             'avatar_url' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
             'organization_id' => 2,
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function itCreates200CompaniesForEachOrganization(): void
+    {
+        Organization::all()->each(function ($org) {
+            $this->assertCount(200, $org->companies);
+        });
     }
 }

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             OrganizationSeeder::class,
             UserSeeder::class,
             CompanySeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }

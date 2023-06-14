@@ -7,9 +7,9 @@
             <h3 class="text-base font-bold text-gray-900 sm:text-base">
                 {{ $title }}
             </h3>
-            <p class="text-sm">
+            <div class="text-sm">
                 {{ $subtitle}}
-            </p>
+            </div>
         </div>
     </div>
 

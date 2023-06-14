@@ -1,6 +1,7 @@
 @storybook([
     'name' => 'Search result card',
     'args' => [
+        'href' => '#',
         'pictureUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
         'organizationName' => 'Meilisearch'
     ],
@@ -9,7 +10,7 @@
     ],
 ])
 
-<x-molecules.search-result-card>
+<x-molecules.search-result-card href="{{ $href }}">
     <x-slot:title>
         Title
     </x-slot>

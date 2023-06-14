@@ -1,6 +1,6 @@
-@props(['contactAvatarUrl', 'contactFullName', 'contactCompanyName', 'contactEmail', 'contactPhoneNumber'])
+@props(['href', 'contactAvatarUrl', 'contactFullName', 'contactCompanyName', 'contactEmail', 'contactPhoneNumber'])
 
-<x-molecules.search-result-card>
+<x-molecules.search-result-card href="{{ $href }}">
     <x-slot:picture>
         <x-atoms.avatar image-url="{{ $contactAvatarUrl }}"></x-atoms.avatar>
     </x-slot>

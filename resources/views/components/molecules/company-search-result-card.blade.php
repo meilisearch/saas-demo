@@ -1,6 +1,6 @@
-@props([ 'companyName', 'companyLogoUrl', 'associatedContactsNumber'])
+@props([ 'href', 'companyName', 'companyLogoUrl', 'associatedContactsNumber'])
 
-<x-molecules.search-result-card>
+<x-molecules.search-result-card href="{{ $href }}">
     <x-slot:picture>
         <x-atoms.organization-logo organization-name="{{ $companyName }}" logo-url="{{ $companyLogoUrl }}"></x-atoms.organization-logo>
     </x-slot>

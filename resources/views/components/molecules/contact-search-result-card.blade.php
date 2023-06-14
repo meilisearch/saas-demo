@@ -1,22 +1,23 @@
-@props(['imageUrl', 'fullName', 'companyName', 'email', 'phoneNumber'])
+@props(['contactAvatarUrl', 'contactFullName', 'contactCompanyName', 'contactEmail', 'contactPhoneNumber'])
+
 <x-molecules.search-result-card>
     <x-slot:picture>
-        <x-atoms.avatar :$imageUrl></x-atoms.avatar>
+        <x-atoms.avatar image-url="{{ $contactAvatarUrl }}"></x-atoms.avatar>
     </x-slot>
     <x-slot:title >
-        {{ $fullName }}
+        {{ $contactFullName }}
     </x-slot:title>
 
     <x-slot:subtitle >
-        {{ $companyName }}
+        {{ $contactCompanyName }}
     </x-slot:subtitle>
 
     <div class="flex items-center">
         <x-atoms.mail-icon class="mr-2"></x-atoms.mail-icon>
-        {{ $email }}
+        {{ $contactEmail }}
     </div>
     <div class="flex items-center">
         <x-atoms.phone-icon class="mr-2"></x-atoms.phone-icon>
-        {{ $phoneNumber }}
+        {{ $contactPhoneNumber }}
     </div>
 </x-molecules.search-result-card>

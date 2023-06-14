@@ -27,7 +27,7 @@ class HomeController extends Controller
             'userEmail' => $user->email,
             'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
             'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
-            'organizationName' => 'Meilisearch',
+            'organizationName' => $user->organization->name,
         ]);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Vite;
 
 class HomeController extends Controller
@@ -12,10 +14,18 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $user = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            $user = User::findById(1);
+            Auth::login($user);
+        }
         return view('home')->with([
-            'userAvatarUrl' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80',
-            'userName' => 'John Doe',
-            'userEmail' => 'john.doe@example.com',
+            'userName' => $user->name,
+            'userAvatarUrl' => $user->avatar_url,
+            'userEmail' => $user->email,
+            'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
             'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
             'organizationName' => 'Meilisearch',
         ]);

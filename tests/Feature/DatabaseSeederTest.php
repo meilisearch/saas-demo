@@ -62,4 +62,26 @@ class DatabaseSeederTest extends TestCase
             $this->assertCount(5, $company->contacts);
         });
     }
+
+    /**
+     * @test
+     */
+    public function itCreates20DealsForEachOrganization(): void
+    {
+        Organization::all()->each(function ($org) {
+            $this->assertCount(20, $org->deals);
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function itCreatesDealsForCompaniesOwnedByTheOrganization(): void
+    {
+        Organization::with('deals.company')->get()->each(function ($org) {
+            $org->deals->each(function ($deal) use ($org) {
+                $this->assertEquals($org->id, $deal->company->organization->id);
+            });
+        });
+    }
 }

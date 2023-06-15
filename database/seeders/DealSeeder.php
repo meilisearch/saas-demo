@@ -18,6 +18,7 @@ class DealSeeder extends Seeder
             $organization->deals()->saveMany(
                 Deal::factory()->count(20)->make([
                     'company_id' => $organization->companies->random()->id,
+                    'contact_id' => $organization->contacts->random()->id,
                 ])
             );
         });

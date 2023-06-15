@@ -21,6 +21,11 @@ class Organization extends Model
         return $this->hasMany(Company::class);
     }
 
+    public function contacts(): HasManyThrough
+    {
+        return $this->hasManyThrough(Contact::class, Company::class);
+    }
+
     public function deals(): HasMany
     {
         return $this->hasMany(Deal::class);

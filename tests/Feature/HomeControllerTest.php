@@ -16,7 +16,7 @@ class HomeControllerTest extends TestCase
      */
     public function itLogsUser1ByDefault(): void
     {
-        $this->seed();
+        $this->seedUsers();
         $user = User::findById(1);
         $this->assertGuest();
         $this->get('/')->assertSee($user->name);
@@ -28,7 +28,7 @@ class HomeControllerTest extends TestCase
      */
     public function itDisplaysTheUserOrganization(): void
     {
-        $this->seed();
+        $this->seedUsers();
         $user = User::findById(1);
         $this->actingAs($user)
             ->get('/')

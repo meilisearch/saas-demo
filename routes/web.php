@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DealController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+
+Route::get('/deals', [DealController::class, 'index'])->name('deals.index');

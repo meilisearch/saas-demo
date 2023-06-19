@@ -1,8 +1,7 @@
 @props(['userAvatarUrl', 'userName', 'userEmail', 'otherUserEmail'])
 
-<div class="border-e -mt-16 flex h-screen flex-col justify-between bg-white pt-16">
+<div class="border-e flex h-screen flex-col justify-between bg-white">
     <div class="px-4 py-6">
-
         <nav aria-label="Main Nav" class="flex flex-col space-y-1">
             <x-molecules.side-menu-item href="#" :is-active="true">
                 <x-slot:icon>

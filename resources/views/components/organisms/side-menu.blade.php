@@ -10,14 +10,14 @@
                 Dashboard
             </x-molecules.side-menu-item>
 
-            <x-molecules.side-menu-item href="#">
+            <x-molecules.side-menu-item href="{{ route('contacts.index') }}">
                 <x-slot:icon>
                     <x-atoms.contact-icon></x-atoms.contact-icon>
                 </x-slot:icon>
                 Contacts
             </x-molecules.side-menu-item>
 
-            <x-molecules.side-menu-item href="#">
+            <x-molecules.side-menu-item href="{{ route('companies.index') }}">
                 <x-slot:icon>
                     <x-atoms.company-icon></x-atoms.company-icon>
                 </x-slot:icon>

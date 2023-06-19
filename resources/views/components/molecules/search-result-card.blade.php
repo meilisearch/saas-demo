@@ -1,6 +1,6 @@
 @props(['href'])
 
-<x-atoms.card href="{{ $href }}">
+<x-atoms.card href="{{ $href }}" class="shrink-0">
     <div class="sm:flex sm:justify-start sm:gap-4 items-center">
         {{ $picture }}
         <div class="flex flex-col">

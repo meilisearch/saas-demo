@@ -37,7 +37,6 @@ class Organization extends Model
     protected static function booted()
     {
         static::creating(function (Organization $organization) {
-            Log::debug('creating');
             $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
             $meiliApiKey = env('MEILISEARCH_KEY');
 
@@ -51,13 +50,6 @@ class Organization extends Model
                     'expiresAt' => new DateTime('2030-12-31'),
                 ]
             );
-        });
-
-        static::created(function (Organization $organization) {
-            Log::debug('created');
-        });
-        static::saved(function (Organization $organization) {
-            Log::debug('saved');
         });
     }
 

@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use DateTime;
+use Laravel\Scout\EngineManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Support\Facades\Log;
 
 class Organization extends Model
 {
@@ -29,5 +32,41 @@ class Organization extends Model
     public function deals(): HasMany
     {
         return $this->hasMany(Deal::class);
+    }
+
+    protected static function booted()
+    {
+        static::creating(function (Organization $organization) {
+            Log::debug('creating');
+            $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
+            $meiliApiKey = env('MEILISEARCH_KEY');
+
+            $meilisearch = resolve(EngineManager::class)->engine();
+
+            $organization->meilisearch_token = $meilisearch->generateTenantToken(
+                $meiliApiKeyUid,
+                $organization->getSearchRules(),
+                [
+                    'apiKey' => $meiliApiKey,
+                    'expiresAt' => new DateTime('2030-12-31'),
+                ]
+            );
+        });
+
+        static::created(function (Organization $organization) {
+            Log::debug('created');
+        });
+        static::saved(function (Organization $organization) {
+            Log::debug('saved');
+        });
+    }
+
+    public function getSearchRules(): object
+    {
+        return (object) [
+            '*' => (object) [
+                'filter' => "organization_id = $this->id",
+            ]
+        ];
     }
 }

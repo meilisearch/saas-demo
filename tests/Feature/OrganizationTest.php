@@ -5,9 +5,9 @@ namespace Tests\Feature;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Organization;
+use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Log;
+use Laravel\Scout\EngineManager;
 use Tests\TestCase;
 
 class OrganizationTest extends TestCase
@@ -44,5 +44,27 @@ class OrganizationTest extends TestCase
         }, 0);
 
         $this->assertEquals($totalContacts, $org->contacts->count());
+    }
+
+    /**
+     * @test
+     */
+    public function itSavesAMeilisearchTokenOnCreation(): void
+    {
+        $org = Organization::factory()->create();
+
+        $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
+        $meiliApiKey = env('MEILISEARCH_KEY');
+
+        $options = [
+            'apiKey' => $meiliApiKey,
+            'expiresAt' => new DateTime('2030-12-31'),
+        ];
+
+        $meilisearch = resolve(EngineManager::class)->engine();
+
+        $token = $meilisearch->generateTenantToken($meiliApiKeyUid, $org->getSearchRules(), $options);
+
+        $this->assertNotNull(Organization::find($org->id)->meilisearch_token);
     }
 }

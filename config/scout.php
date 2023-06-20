@@ -136,7 +136,7 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             Company::class => [
-                'filterableAttributes' => ['id', 'name', 'email'],
+                'filterableAttributes' => ['id', 'name', 'email', 'organization_id'],
             ]
         ],
     ],

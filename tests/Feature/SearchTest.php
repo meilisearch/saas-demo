@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Company;
+use App\Models\Contact;
+use App\Models\Deal;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -13,10 +15,10 @@ class SearchTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
         $this->artisan('scout:flush', ['model' => \App\Models\Company::class]);
         $this->artisan('scout:sync-index-settings');
-        $this->artisan('scout:import', ['model' => \App\Models\Company::class]);
+        $this->seed();
+        // TODO: waiting for Meilisearch tasks to be finished would be optimal to avoid random failures
     }
 
     /**
@@ -26,6 +28,26 @@ class SearchTest extends TestCase
     {
         $rawSearchResults = Company::search('')->raw();
         $this->assertEquals(Company::count(), $rawSearchResults['nbHits']);
+        // TODO: update this test to ensure data is synchronized after updates
+    }
+
+    /**
+     * @test
+     */
+    public function itSynchronizesContactsData(): void
+    {
+        $rawSearchResults = Contact::search('')->raw();
+        $this->assertEquals(Contact::count(), $rawSearchResults['nbHits']);
+        // TODO: update this test to ensure data is synchronized after updates
+    }
+
+    /**
+     * @test
+     */
+    public function itSynchronizesDealsData(): void
+    {
+        $rawSearchResults = Deal::search('')->raw();
+        $this->assertEquals(Deal::count(), $rawSearchResults['nbHits']);
         // TODO: update this test to ensure data is synchronized after updates
     }
 }

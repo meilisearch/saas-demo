@@ -52,19 +52,6 @@ class OrganizationTest extends TestCase
     public function itSavesAMeilisearchTokenOnCreation(): void
     {
         $org = Organization::factory()->create();
-
-        $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
-        $meiliApiKey = env('MEILISEARCH_KEY');
-
-        $options = [
-            'apiKey' => $meiliApiKey,
-            'expiresAt' => new DateTime('2030-12-31'),
-        ];
-
-        $meilisearch = resolve(EngineManager::class)->engine();
-
-        $token = $meilisearch->generateTenantToken($meiliApiKeyUid, $org->getSearchRules(), $options);
-
         $this->assertNotNull(Organization::find($org->id)->meilisearch_token);
     }
 }

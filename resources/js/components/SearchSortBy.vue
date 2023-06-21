@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { AisSortBy } from 'vue-instantsearch/vue3/es';
 
-const sortingOptions = [
-  { value: 'contacts:name:asc', label: 'Sort by Name' },
-  { value: 'contacts:name:desc', label: 'Sort by Name (descending)' },
-  { value: 'contacts:company_name:asc', label: 'Sort by Company' },
-  { value: 'contacts:company_name:desc', label: 'Sort by Company (descending)' },
-]
+const props = defineProps<{
+  sortingOptions: {
+    label: string;
+    value: string;
+  }[];
+}>()
 </script>
 
 <template>
-  <AisSortBy :items="sortingOptions">
+  <AisSortBy :items="props.sortingOptions">
     <template #default="{ items, refine }">
       <select name="sort-by" id="sort-by" class="text-gray-700 border-gray-300 rounded-lg sm:text-sm"
         @change="refine($event.target.value)">

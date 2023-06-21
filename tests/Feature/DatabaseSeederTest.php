@@ -89,10 +89,18 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
-    public function itCreates20DealsForEachOrganization(): void
+    public function itCreatesOneDealPerContactForEachOrganization(): void
     {
-        Organization::all()->each(function ($org) {
-            $this->assertCount(20, $org->deals);
+        $orgs = Organization::with('companies.contacts')->get();
+
+        $orgs->each(function ($org) {
+            $this->assertEquals($org->contacts->count(), $org->deals->count());
+            $org->contacts->each(function ($contact) use ($org) {
+                $this->assertDatabaseHas('deals', [
+                    'organization_id' => $org->id,
+                    'contact_id' => $contact->id,
+                ]);
+            });
         });
     }
 

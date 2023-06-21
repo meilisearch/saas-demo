@@ -6,6 +6,7 @@ import Meilisearch from './components/Meilisearch.vue'
 import SearchBar from './components/SearchBar.vue'
 import SearchSortBy from './components/SearchSortBy.vue'
 import ContactList from './components/ContactList.vue'
+import DealList from './components/DealList.vue'
 
 const app = createApp({
   components: {
@@ -13,6 +14,7 @@ const app = createApp({
     SearchBar,
     SearchSortBy,
     ContactList,
+    DealList,
   }
 })
 

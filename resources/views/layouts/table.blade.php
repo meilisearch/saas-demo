@@ -2,15 +2,15 @@
 
 @section('content')
     <div id="table-search">
-        <meilisearch index-name="contacts" host="localhost:7700" api-key="{{ $meilisearchToken }}">
+        <meilisearch index-name="{{ $indexName }}" host="localhost:7700" api-key="{{ $meilisearchToken }}">
             <div class="sticky top-0 mb-8 bg-gray-50 py-6 shadow-sm">
                 <div class="flex px-10">
                     <h1 class="text-2xl font-semibold">
                         @yield('title')
                     </h1>
                     <div class="ml-auto flex gap-4">
-                        <search-sort-by></search-sort-by>
-                        <search-bar placeholder="Search contacts..."></search-bar>
+                        @yield('sort')
+                        @yield('search-bar')
                     </div>
                 </div>
             </div>

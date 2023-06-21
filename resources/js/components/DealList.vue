@@ -14,39 +14,38 @@ import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
           <thead>
             <tr>
               <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
-                Name
-              </th>
-              <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
                 Company
               </th>
               <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
-                Email
+                Prospect
               </th>
               <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
-                Phone
+                Value
               </th>
             </tr>
           </thead>
 
           <tbody class="divide-y divide-gray-200">
-            <tr v-for="contact in items">
-              <td class="flex items-center gap-2 px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+            <tr v-for="deal in items" class="even:bg-gray-50">
+              <td class="items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+                <div class="inline-flex items-center gap-2">
+                  <div class="inline-flex items-center w-6 h-6 p-1 overflow-hidden bg-gray-100 rounded">
+                    <img :src="`https://logo.clearbit.com/${deal.company_url}`" alt="{{ deal.company_name }}">
+                  </div>
+                  <AisHighlight :hit="deal" attribute="company_name" />
+                </div>
+              </td>
+              <td class="flex items-center gap-2 px-4 py-2 text-gray-700 whitespace-nowrap">
                 <div class="w-6 h-6 overflow-hidden rounded-full">
-                  <img :src="`https://api.dicebear.com/6.x/initials/svg?seed=${contact.email}`" class="object-cover" />
+                  <img :src="`https://api.dicebear.com/6.x/initials/svg?seed=${deal.contact_email}`"
+                    class="object-cover" />
                 </div>
-                <AisHighlight :hit="contact" attribute="name" />
+                <AisHighlight :hit="deal" attribute="contact_name" />
               </td>
-              <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
-                <div class="inline-flex items-center w-6 h-6 p-1 overflow-hidden bg-gray-100 rounded">
-                  <img :src="`https://logo.clearbit.com/${contact.company_url}`" alt="{{ contact.company_name }}">
-                </div>
-                <AisHighlight :hit="contact" attribute="company_name" />
-              </td>
-              <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
-                <AisHighlight :hit="contact" attribute="email" />
-              </td>
-              <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
-                <AisHighlight :hit="contact" attribute="phone_number" />
+              <td class="px-4 py-2 text-right text-gray-700 whitespace-nowrap">
+                {{ new Intl.NumberFormat('en-US', {
+                  style: 'currency', currency: 'USD',
+                }).format(deal.value) }}
               </td>
             </tr>
           </tbody>

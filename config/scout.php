@@ -2,6 +2,7 @@
 
 use App\Models\Company;
 use App\Models\Contact;
+use App\Models\Deal;
 
 return [
 
@@ -141,7 +142,10 @@ return [
             ],
             Contact::class => [
                 'sortableAttributes' => ['name', 'company_name']
-            ]
+            ],
+            Deal::class => [
+                'sortableAttributes' => ['company_name', 'contact_name']
+            ],
         ],
     ],
 

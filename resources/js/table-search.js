@@ -2,15 +2,15 @@ import { createApp } from 'vue'
 import InstantSearch from 'vue-instantsearch/vue3/es'
 
 // Components
-import ContactList from './components/organisms/ContactList.vue'
-import Meilisearch from './components/organisms/Meilisearch.vue'
-import SearchBar from './components/organisms/SearchBar.vue'
+import Meilisearch from './components/Meilisearch.vue'
+import SearchBar from './components/SearchBar.vue'
+import ContactList from './components/ContactList.vue'
 
 const app = createApp({
   components: {
     ContactList,
+    SearchBar,
     Meilisearch,
-    SearchBar
   }
 })
 

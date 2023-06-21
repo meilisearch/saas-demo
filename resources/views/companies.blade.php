@@ -1,6 +1,8 @@
-@extends('app')
+@extends('layouts.table')
 
-@section('content')
+@section('title', 'Companies')
+
+@section('table')
     <div class="overflow-x-auto rounded-lg border border-gray-200">
         <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
             <thead>

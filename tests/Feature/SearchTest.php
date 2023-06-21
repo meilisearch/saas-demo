@@ -15,8 +15,7 @@ class SearchTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->artisan('scout:flush', ['model' => \App\Models\Company::class]);
-        $this->artisan('scout:sync-index-settings');
+        $this->resetSearchIndexes();
         $this->seed();
         // TODO: waiting for Meilisearch tasks to be finished would be optimal to avoid random failures
     }

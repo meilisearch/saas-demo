@@ -15,4 +15,14 @@ class Contact extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        $array['company_name'] = $this->company->name;
+        $array['company_url'] = $this->company->url;
+
+        return $array;
+    }
 }

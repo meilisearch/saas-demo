@@ -18,6 +18,7 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => fake()->company(),
+            'url' => fake()->domainName(),
         ];
     }
 }

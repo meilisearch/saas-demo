@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Organization;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class DatabaseSeederTest extends TestCase
@@ -56,10 +57,32 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
+    public function itCreatesCompaniesWithURL(): void
+    {
+        Company::all()->each(function ($company) {
+            $this->assertNotNull($company->url);
+        });
+    }
+
+    /**
+     * @test
+     */
     public function itCreates5ContactsForEachCompany(): void
     {
         Company::all()->each(function ($company) {
             $this->assertCount(5, $company->contacts);
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function itCreatesContactsWithCompanyEmail(): void
+    {
+        Company::all()->each(function ($company) {
+            $company->contacts->each(function ($contact) use ($company) {
+                $this->assertStringContainsString($company->getEmailDomain(), $contact->email);
+            });
         });
     }
 

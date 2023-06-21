@@ -8,8 +8,8 @@
                     <h1 class="text-2xl font-semibold">
                         @yield('title')
                     </h1>
-                    <div class="ml-auto">
-
+                    <div class="ml-auto flex gap-4">
+                        <search-sort-by></search-sort-by>
                         <search-bar placeholder="Search contacts..."></search-bar>
                     </div>
                 </div>

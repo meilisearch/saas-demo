@@ -57,7 +57,7 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
-    public function itCreatesCompaniesWithURL(): void
+    public function itCreatesCompaniesWithUrl(): void
     {
         Company::all()->each(function ($company) {
             $this->assertNotNull($company->url);

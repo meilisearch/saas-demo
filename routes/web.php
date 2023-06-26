@@ -22,9 +22,11 @@ use App\Http\Middleware\LoginAutomatically;
 // Manually switch authenticated user
 Route::post('/login', [LoginController::class, 'login']);
 
+// Defaults to deals page
+Route::redirect('/', '/deals');
+
 // Login the user with ID 1 if no user is logged in
 Route::middleware([LoginAutomatically::class])->group(function () {
-    Route::get('/', HomeController::class);
     
     Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
     

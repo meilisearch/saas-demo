@@ -16,8 +16,10 @@ class ContactFactory extends Factory
      */
     public function definition(): array
     {
+        $firstName = fake()->firstName();
+        $lastName = fake()->lastName();
         return [
-            'name' => fake()->name,
+            'name' => $firstName . ' ' . $lastName,
             'email' => fake()->unique()->companyEmail(),
             'phone_number' => fake()->phoneNumber,
         ];

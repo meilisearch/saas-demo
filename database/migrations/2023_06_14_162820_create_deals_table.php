@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained();
             $table->foreignId('contact_id')->constrained();
             $table->integer('value');
+            $table->string('status');
             $table->timestamps();
         });
     }

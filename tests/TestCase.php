@@ -15,4 +15,12 @@ abstract class TestCase extends BaseTestCase
         $this->seed(OrganizationSeeder::class);
         $this->seed(UserSeeder::class);
     }
+
+    public function resetSearchIndexes(): void
+    {
+        $this->artisan('scout:flush', ['model' => \App\Models\Company::class]);
+        $this->artisan('scout:flush', ['model' => \App\Models\Deal::class]);
+        $this->artisan('scout:flush', ['model' => \App\Models\Company::class]);
+        $this->artisan('scout:sync-index-settings');
+    }
 }

@@ -25,4 +25,16 @@ class Deal extends Model
     {
         return $this->belongsTo(Contact::class);
     }
+
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        $array['company_name'] = $this->company->name;
+        $array['company_url'] = $this->company->url;
+        $array['contact_name'] = $this->contact->name;
+        $array['contact_email'] = $this->contact->email;
+
+        return $array;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,5 +21,12 @@ class Company extends Model
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    // only transforms 'www.domain.com' to 'domain.com'
+    public function getEmailDomain(): string
+    {
+        $parsedUrl = parse_url($this->url);
+        return str_ireplace('www.', '', $parsedUrl['path']);
     }
 }

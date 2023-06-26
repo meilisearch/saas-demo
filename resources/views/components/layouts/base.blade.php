@@ -13,7 +13,7 @@
 
 {{-- Content --}}
 <div class="fixed bottom-0 right-0 left-64 top-16 overflow-y-auto">
-    <div class="flex flex-col px-10 py-8">
+    <div class="relative">
         {{ $slot }}
     </div>
 </div>

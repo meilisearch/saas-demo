@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Closure;
 use Database\Seeders\OrganizationSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;

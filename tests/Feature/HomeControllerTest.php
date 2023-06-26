@@ -11,15 +11,29 @@ class HomeControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    const ROUTE_NAMES = [
+        'deals.index',
+        'contacts.index',
+        'companies.index',
+    ];
+
+    /**
+     * @test
+     */
+    public function itRedirectsToDealsByDefault(): void
+    {
+        $this->get('/')->assertRedirect(route('deals.index'));
+    }
+
     /**
      * @test
      */
     public function itLogsUser1ByDefault(): void
     {
         $this->seedUsers();
-        $user = User::findById(1);
         $this->assertGuest();
-        $this->get('/')->assertSee($user->name);
+        $user = User::findById(1);
+        $this->get('/');
         $this->assertAuthenticatedAs($user);
     }
 
@@ -30,8 +44,11 @@ class HomeControllerTest extends TestCase
     {
         $this->seedUsers();
         $user = User::findById(1);
-        $this->actingAs($user)
-            ->get('/')
-            ->assertSee($user->organization->name);
+        
+        foreach (self::ROUTE_NAMES as $routeName) {
+            $this->actingAs($user)
+                ->get(route($routeName))
+                ->assertSee($user->organization->name);
+        }
     }
 }

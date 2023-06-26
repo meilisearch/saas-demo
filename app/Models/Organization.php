@@ -37,6 +37,12 @@ class Organization extends Model
     protected static function booted()
     {
         static::creating(function (Organization $organization) {
+            // This will be true when running tests
+            if (env('SCOUT_DRIVER') !== 'meilisearch') {
+                $organization->meilisearch_token = 'fake-tenant-token';
+                return;
+            }
+
             $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
             $meiliApiKey = env('MEILISEARCH_KEY');
 

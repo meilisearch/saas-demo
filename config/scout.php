@@ -139,6 +139,7 @@ return [
         'index-settings' => [
             Company::class => [
                 'filterableAttributes' => ['id', 'name', 'email', 'organization_id'],
+                'sortableAttributes' => ['name'],
             ],
             Contact::class => [
                 'sortableAttributes' => ['name', 'company_name']

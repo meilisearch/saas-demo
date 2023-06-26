@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
 
-const statusBackgroundClass = (status: string) => {
+const statusClass = (status: string) => {
   switch (status) {
     case 'won':
       return 'bg-green-100 text-green-800'
@@ -61,8 +61,8 @@ const statusBackgroundClass = (status: string) => {
                 <AisHighlight :hit="deal" attribute="contact_name" />
               </td>
               <td class="px-4 py-2 text-right text-gray-700 whitespace-nowrap">
-                <span class="px-2 py-1 rounded-full" :class="[statusBackgroundClass(deal.status)]">
-                  <AisHighlight :hit="deal" attribute="status" />
+                <span class="px-2 py-1 rounded-full" :class="[statusClass(deal.status)]">
+                  <AisHighlight :hit="deal" attribute="status" class="text-xs tracking-wide uppercase" />
                 </span>
               </td>
               <td class="px-4 py-2 text-right text-gray-700 whitespace-nowrap">

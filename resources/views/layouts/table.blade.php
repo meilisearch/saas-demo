@@ -9,8 +9,15 @@
                         @yield('title')
                     </h1>
                     <div class="ml-auto flex gap-4">
-                        @yield('sort')
-                        @yield('search-bar')
+                        <div>
+                            @yield('filter')
+                        </div>
+                        <div>
+                            @yield('sort')
+                        </div>
+                        <div>
+                            @yield('search-bar')
+                        </div>
                     </div>
                 </div>
             </div>

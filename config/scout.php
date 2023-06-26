@@ -138,14 +138,16 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             Company::class => [
-                'filterableAttributes' => ['id', 'name', 'email', 'organization_id'],
+                'filterableAttributes' => ['organization_id'],
                 'sortableAttributes' => ['name'],
             ],
             Contact::class => [
+                'filterableAttributes' => ['organization_id'],
                 'sortableAttributes' => ['name', 'company_name']
             ],
             Deal::class => [
-                'sortableAttributes' => ['company_name', 'contact_name']
+                'filterableAttributes' => ['organization_id', 'status'],
+                'sortableAttributes' => ['company_name', 'contact_name', 'status', 'value']
             ],
         ],
     ],

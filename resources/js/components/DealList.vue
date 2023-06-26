@@ -1,5 +1,20 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
+
+const statusBackgroundClass = (status: string) => {
+  switch (status) {
+    case 'won':
+      return 'bg-green-100 text-green-800'
+    case 'lost':
+      return 'bg-red-100 text-red-800'
+    case 'contacted':
+      return 'bg-yellow-100 text-yellow-800'
+    case 'to contact':
+      return 'bg-blue-100 text-blue-800'
+    default:
+      return 'bg-gray-100 text-gray-800'
+  }
+}
 </script>
 
 <template>
@@ -18,6 +33,9 @@ import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
               </th>
               <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
                 Prospect
+              </th>
+              <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
+                Status
               </th>
               <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
                 Value
@@ -41,6 +59,11 @@ import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
                     class="object-cover" />
                 </div>
                 <AisHighlight :hit="deal" attribute="contact_name" />
+              </td>
+              <td class="px-4 py-2 text-right text-gray-700 whitespace-nowrap">
+                <span class="px-2 py-1 rounded-full" :class="[statusBackgroundClass(deal.status)]">
+                  <AisHighlight :hit="deal" attribute="status" />
+                </span>
               </td>
               <td class="px-4 py-2 text-right text-gray-700 whitespace-nowrap">
                 {{ new Intl.NumberFormat('en-US', {

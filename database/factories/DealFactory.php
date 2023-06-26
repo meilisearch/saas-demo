@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class DealFactory extends Factory
 {
+    const DEAL_STATUSES = [
+      'lead', 'to contact', 'contacted', 'won', 'lost'
+    ];
+
     /**
      * Define the model's default state.
      *
@@ -18,6 +22,7 @@ class DealFactory extends Factory
     {
         return [
             'value' => fake()->numberBetween(1000, 100000),
+            'status' => fake()->randomElement(self::DEAL_STATUSES),
         ];
     }
 }

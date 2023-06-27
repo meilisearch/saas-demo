@@ -56,4 +56,19 @@ class PagesTest extends TestCase
                 ->assertSee($user->organization->name);
         }
     }
+
+    /**
+     * @test
+     */
+    public function itProvidesTheOrganizationMeilisearchToken(): void
+    {
+        $this->seedUsers();
+        $user = User::findById(1);
+
+        foreach (self::ROUTE_NAMES as $routeName) {
+            $this->actingAs($user)
+                ->get(route($routeName))
+                ->assertViewHas('meilisearchToken', $user->organization->meilisearch_token);
+        }
+    }
 }

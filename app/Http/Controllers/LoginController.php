@@ -16,9 +16,9 @@ class LoginController extends Controller
 
         if ($user) {
             Auth::login($user);
-            return redirect('/');
+            return back();
         }
 
-        return redirect('/')->with('error', 'Invalid credentials');
+        return back()->with('error', 'Invalid credentials');
     }
 }

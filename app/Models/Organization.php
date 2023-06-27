@@ -36,35 +36,46 @@ class Organization extends Model
 
     protected static function booted()
     {
-        static::creating(function (Organization $organization) {
+        static::retrieved(function (Organization $organization) {
             // This will be true when running tests
-            if (env('SCOUT_DRIVER') !== 'meilisearch') {
+            if (env('SCOUT_DRIVER') === 'array' && env('APP_ENV') === 'testing') {
                 $organization->meilisearch_token = 'fake-tenant-token';
                 return;
             }
 
-            $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
-            $meiliApiKey = env('MEILISEARCH_KEY');
+            Log::debug('Generating tenant token for organization ID: ' . $organization->id);
 
-            $meilisearch = resolve(EngineManager::class)->engine();
-
-            $organization->meilisearch_token = $meilisearch->generateTenantToken(
-                $meiliApiKeyUid,
-                $organization->getSearchRules(),
-                [
-                    'apiKey' => $meiliApiKey,
-                    'expiresAt' => new DateTime('2030-12-31'),
+            $searchRules = (object) [
+                '*' => (object) [
+                    'filter' => 'organization_id = ' . $organization->id,
                 ]
-            );
+            ];
+
+            $meiliApiKey = env('MEILISEARCH_KEY');
+            $meiliApiKeyUid = env('MEILISEARCH_KEY_UID');
+
+            Log::debug("Using MeiliSearch API key: {$meiliApiKey}");
+            Log::debug("Using MeiliSearch API key UID: {$meiliApiKeyUid}");
+
+            $token = self::generateMeiliTenantToken($meiliApiKeyUid, $searchRules, $meiliApiKey);
+            Log::debug('Generated token: ' . $token);
+
+            $organization->meilisearch_token = $token;
+            $organization->save();
         });
     }
 
-    public function getSearchRules(): object
+    protected static function generateMeiliTenantToken($meiliApiKeyUid, $searchRules, $meiliApiKey)
     {
-        return (object) [
-            '*' => (object) [
-                'filter' => "organization_id = $this->id",
+        $meilisearch = resolve(EngineManager::class)->engine();
+
+        return $meilisearch->generateTenantToken(
+            $meiliApiKeyUid,
+            $searchRules,
+            [
+                'apiKey' => $meiliApiKey,
+                'expiresAt' => new DateTime('2030-12-31'),
             ]
-        ];
+        );
     }
 }

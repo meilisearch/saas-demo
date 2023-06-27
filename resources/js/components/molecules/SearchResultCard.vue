@@ -13,7 +13,7 @@
 <template>
     <Card :href="props.href">
         <div class="sm:flex sm:justify-start sm:gap-4 items-center content-center">
-        <div>
+        <div v-if="$slots.picture">
             <slot name="picture"></slot>
         </div>
         <div class="flex flex-col">

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use App\Models\Deal;
 use App\Models\Organization;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,12 +16,14 @@ class DealSeeder extends Seeder
     public function run(): void
     {
         Organization::all()->each(function (Organization $organization) {
-            $organization->deals()->saveMany(
-                Deal::factory()->count(20)->make([
-                    'company_id' => $organization->companies->random()->id,
-                    'contact_id' => $organization->contacts->random()->id,
-                ])
-            );
+            $organization->contacts->each(function (Contact $contact) use ($organization) {
+                $organization->deals()->save(
+                    Deal::factory()->make([
+                        'company_id' => $contact->company->id,
+                        'contact_id' => $contact->id,
+                    ])
+                );
+            });
         });
     }
 }

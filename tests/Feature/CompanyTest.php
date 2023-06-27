@@ -29,4 +29,15 @@ class CompanyTest extends TestCase
         $company = Company::factory()->for(Organization::factory()->create())->hasContacts(3)->create();
         $this->assertCount(3, $company->contacts);
     }
+
+    /**
+     * @test
+     */
+    public function itHasAnEmailDomainAttribute(): void
+    {
+        $company = Company::factory()->for(Organization::factory()->create())->create([
+            'url' => 'www.meilisearch.com',
+        ]);
+        $this->assertEquals('meilisearch.com', $company->getEmailDomain());
+    }
 }

@@ -30,6 +30,8 @@ class CompanyController extends Controller
             'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
             'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
             'organizationName' => $user->organization->name,
+            'indexName' => 'companies:name:asc',
+            'meilisearchToken' => $user->organization->meilisearch_token,
         ]);
     }
 

@@ -30,6 +30,8 @@ class DealController extends Controller
             'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
             'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
             'organizationName' => $user->organization->name,
+            'indexName' => 'deals:company_name:asc',
+            'meilisearchToken' => $user->organization->meilisearch_token,
         ]);
     }
 

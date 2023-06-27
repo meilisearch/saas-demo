@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Organization;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class DatabaseSeederTest extends TestCase
@@ -56,6 +57,16 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
+    public function itCreatesCompaniesWithURL(): void
+    {
+        Company::all()->each(function ($company) {
+            $this->assertNotNull($company->url);
+        });
+    }
+
+    /**
+     * @test
+     */
     public function itCreates5ContactsForEachCompany(): void
     {
         Company::all()->each(function ($company) {
@@ -66,10 +77,30 @@ class DatabaseSeederTest extends TestCase
     /**
      * @test
      */
-    public function itCreates20DealsForEachOrganization(): void
+    public function itCreatesContactsWithCompanyEmail(): void
     {
-        Organization::all()->each(function ($org) {
-            $this->assertCount(20, $org->deals);
+        Company::all()->each(function ($company) {
+            $company->contacts->each(function ($contact) use ($company) {
+                $this->assertStringContainsString($company->getEmailDomain(), $contact->email);
+            });
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function itCreatesOneDealPerContactForEachOrganization(): void
+    {
+        $orgs = Organization::with('companies.contacts')->get();
+
+        $orgs->each(function ($org) {
+            $this->assertEquals($org->contacts->count(), $org->deals->count());
+            $org->contacts->each(function ($contact) use ($org) {
+                $this->assertDatabaseHas('deals', [
+                    'organization_id' => $org->id,
+                    'contact_id' => $contact->id,
+                ]);
+            });
         });
     }
 

@@ -49,9 +49,12 @@ class OrganizationTest extends TestCase
     /**
      * @test
      */
-    public function itSavesAMeilisearchTokenOnCreation(): void
+    public function itAddsAMeilisearchOnRetrieval(): void
     {
         $org = Organization::factory()->create();
-        $this->assertNotNull(Organization::find($org->id)->meilisearch_token);
+        $this->assertNull($org->meilisearch_token);
+
+        // TODO: Figure out how to mock the engine manager
+        $this->assertEquals('fake-tenant-token', Organization::find($org->id)->meilisearch_token);
     }
 }

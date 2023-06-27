@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,15 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $user = null;
-        if (Auth::check()) {
-            $user = Auth::user();
-        } else {
-            $user = User::findById(1);
-            Auth::login($user);
-        }
+        $user = Auth::user();
         return view('contacts')->with([
-            'contacts' => Contact::with(['company'])->get(),
             'userName' => $user->name,
             'userAvatarUrl' => $user->avatar_url,
             'userEmail' => $user->email,

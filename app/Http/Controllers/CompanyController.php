@@ -15,15 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $user = null;
-        if (Auth::check()) {
-            $user = Auth::user();
-        } else {
-            $user = User::findById(1);
-            Auth::login($user);
-        }
+        $user = Auth::user();
         return view('companies')->with([
-            'companies' => Company::withCount(['contacts'])->get(),
             'userName' => $user->name,
             'userAvatarUrl' => $user->avatar_url,
             'userEmail' => $user->email,

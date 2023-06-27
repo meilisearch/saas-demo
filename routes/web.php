@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DealController;
+use App\Http\Middleware\LoginAutomatically;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,18 @@ use App\Http\Controllers\DealController;
 |
 */
 
-Route::get('/', HomeController::class);
-
+// Manually switch authenticated user
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
+// Defaults to deals page
+Route::redirect('/', '/deals');
 
-Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
-
-Route::get('/deals', [DealController::class, 'index'])->name('deals.index');
+// Login the user with ID 1 if no user is logged in
+Route::middleware([LoginAutomatically::class])->group(function () {
+    
+    Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
+    
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+    
+    Route::get('/deals', [DealController::class, 'index'])->name('deals.index');
+});

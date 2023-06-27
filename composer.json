@@ -29,7 +29,8 @@
         "nunomaduro/collision": "^7.0",
         "pestphp/pest": "^2.6",
         "phpunit/phpunit": "^10.1",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "sti3bas/laravel-scout-array-driver": "^3.4"
     },
     "autoload": {
         "psr-4": {

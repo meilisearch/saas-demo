@@ -19,6 +19,8 @@ class Contact extends Model
     public function toSearchableArray(): array
     {
         $array = $this->toArray();
+        
+        $array['organization_id'] = $this->company->organization->id;
 
         $array['company_name'] = $this->company->name;
         $array['company_url'] = $this->company->url;

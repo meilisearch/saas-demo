@@ -29,11 +29,14 @@
         </nav>
     </div>
 
-    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
-        <form action="/login" method="POST">
+    <div class="sticky inset-x-0 bottom-0">
+        <div class="mb-3 text-center text-sm text-gray-400">
+            Try switching to another user by clicking on the user below 👇
+        </div>
+        <form action="/login" method="POST" class="border-t border-gray-100">
             @csrf
             <input type="hidden" name="email" value="{{ $otherUserEmail }}">
-            <button type="submit" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
+            <button type="submit" class="flex w-full items-center gap-2 p-4 hover:bg-gray-100" title="Switch User">
                 <x-atoms.avatar image-url="{{ $userAvatarUrl }}"></x-atoms.avatar>
 
                 <div class="text-left">

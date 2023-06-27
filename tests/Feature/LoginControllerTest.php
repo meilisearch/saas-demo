@@ -28,4 +28,23 @@ class LoginControllerTest extends TestCase
             ->assertStatus(302);
         $this->assertAuthenticatedAs(User::findByEmail(config('app.seeders.user2.email')));
     }
+
+    /**
+     * @test
+     */
+    public function itRedirectsToPreviousRoute(): void
+    {
+        $this->seedUsers();
+        $routeNames =  [
+            'deals.index',
+            'contacts.index',
+            'companies.index',
+        ];
+
+        foreach ($routeNames as $routeName) {
+            $this->get(route($routeName));
+            $this->post('/login', ['email' => config('app.seeders.user1.email')])
+                ->assertRedirectToRoute($routeName);
+        }
+    }
 }

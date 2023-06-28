@@ -18,6 +18,11 @@ class Company extends Model
         return $this->hasMany(Contact::class);
     }
 
+    public function deals(): HasMany
+    {
+        return $this->hasMany(Deal::class);
+    }
+
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);

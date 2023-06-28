@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
-
-const navigateToDataUrl = (event) => {
-  const parentRow = event.target.closest('tr')
-  window.location.href = parentRow.dataset.url
-}
+import { navigateToDataUrl } from '../../helpers'
 </script>
 
 <template>

@@ -17,7 +17,7 @@ export default defineConfig({
                     // to instead re-write asset URLs to point to the Vite
                     // server instead.
                     base: null,
- 
+
                     // The Vue plugin will parse absolute URLs and treat them
                     // as absolute paths to files on disk. Setting this to
                     // `false` will leave absolute URLs un-touched so they can

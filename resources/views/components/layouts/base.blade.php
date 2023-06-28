@@ -1,8 +1,8 @@
-@props(['userAvatarUrl', 'userEmail', 'userName', 'otherUserEmail', 'organizationLogoUrl', 'organizationName'])
+@props(['userAvatarUrl', 'userEmail', 'userName', 'otherUserEmail', 'organizationLogoUrl', 'organizationName', 'meilisearchToken'])
 
 {{-- Header --}}
 <x-organisms.navbar avatar-url="{{ $userAvatarUrl }}" organization-logo-url="{{ $organizationLogoUrl }}"
-    organization-name="{{ $organizationName }}">
+    organization-name="{{ $organizationName }}" meilisearch-token="{{ $meilisearchToken }}">
 </x-organisms.navbar>
 
 {{-- Side menu --}}

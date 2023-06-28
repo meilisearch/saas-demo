@@ -15,16 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('contacts')->with([
-            'userName' => $user->name,
-            'userAvatarUrl' => $user->avatar_url,
-            'userEmail' => $user->email,
-            'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
-            'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
-            'organizationName' => $user->organization->name,
+        return view('contacts.index')->with([
             'indexName' => 'contacts:name:asc',
-            'meilisearchToken' => $user->organization->meilisearch_token,
         ]);
     }
 
@@ -49,7 +41,10 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('contacts.show')->with([
+                'contact' => $contact,
+                'parentPageUrl' => route('contacts.index'),
+            ]);
     }
 
     /**

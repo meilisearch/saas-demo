@@ -30,7 +30,9 @@ Route::middleware([LoginAutomatically::class])->group(function () {
     
     Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
     
-    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+    Route::resource('contacts', ContactController::class)->only([
+    'index', 'show'
+]);
     
     Route::get('/deals', [DealController::class, 'index'])->name('deals.index');
 });

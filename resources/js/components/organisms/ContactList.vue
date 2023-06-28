@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
+
+const navigateToDataUrl = (event) => {
+  const parentRow = event.target.closest('tr')
+  window.location.href = parentRow.dataset.url
+}
 </script>
 
 <template>
@@ -29,7 +34,8 @@ import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
           </thead>
 
           <tbody class="divide-y divide-gray-200">
-            <tr v-for="contact in items">
+            <tr v-for="contact in items" :data-url="`/contacts/${contact.id}`" @click="navigateToDataUrl"
+              class="cursor-pointer">
               <td class="flex items-center gap-2 px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                 <div class="w-6 h-6 overflow-hidden rounded-full">
                   <img :src="`https://api.dicebear.com/6.x/initials/svg?seed=${contact.email}`" class="object-cover" />

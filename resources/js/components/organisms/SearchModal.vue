@@ -1,12 +1,45 @@
+<script setup lang="ts">
+import { VueFinalModal } from 'vue-final-modal'
+import ModalBox from './ModalBox.vue';
+import SearchBar from '../molecules/SearchBar.vue'
+import SearchResults from './SearchResults.vue'
+import CompanySearchResults from './CompanySearchResults.vue'
+import ContactSearchResults from './ContactSearchResults.vue'
+import DealSearchResults from './DealSearchResults.vue'
+
+defineProps<{
+  title?: string
+}>()
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
+</script>
+
 <template>
-    <div class="z-100 fixed top-0 right-0 flex h-full w-full justify-center overflow-hidden bg-gray-200/50 p-4 pt-6">
-        <div class="flex max-h-[70vh] w-[52rem] flex-col rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 divide-y divide-violet-100 mt-36">
-            <header class="w-full mb-4">
-                <slot name="searchbar"></slot>
-            </header>
-            <div class="flex flex-row justify-between mt-4 overflow-y-scroll pt-6 gap-4">
-                <slot name="results"></slot>
-            </div>
-        </div>
-    </div>
+    <VueFinalModal :hide-overlay="false" display-directive="show" content-transition="vfm-fade"
+    class="flex justify-center items-center"
+      content-class="relative rounded-lg bg-white dark:bg-gray-900"
+      overlay-transition="vfm-fade"
+    >
+        <ModalBox>
+            <template #searchbar>
+                <SearchBar placeholder='Search'/>
+            </template>
+            <template #results>
+                <div class="max-w-[30%] min-w-[30%]">
+                    <CompanySearchResults />
+                </div>
+                <SearchResults index-name="contacts">
+                    <template #default>
+                        <ContactSearchResults/>
+                    </template>
+                </SearchResults>
+                <SearchResults index-name="deals">
+                    <template #default>
+                        <DealSearchResults/>
+                    </template>
+                </SearchResults>
+            </template>
+        </ModalBox>
+    </VueFinalModal>
 </template>

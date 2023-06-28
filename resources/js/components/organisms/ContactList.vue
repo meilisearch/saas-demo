@@ -40,10 +40,12 @@ import { navigateToDataUrl } from '../../helpers'
                 <AisHighlight :hit="contact" attribute="name" />
               </td>
               <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
-                <div class="inline-flex items-center w-6 h-6 p-1 overflow-hidden bg-gray-100 rounded">
-                  <img :src="`https://logo.clearbit.com/${contact.company_url}`" alt="{{ contact.company_name }}">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 overflow-hidden bg-gray-100 rounded">
+                    <img :src="`https://logo.clearbit.com/${contact.company_url}`" alt="{{ contact.company_name }}">
+                  </div>
+                  <AisHighlight :hit="contact" attribute="company_name" />
                 </div>
-                <AisHighlight :hit="contact" attribute="company_name" />
               </td>
               <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
                 <AisHighlight :hit="contact" attribute="email" />

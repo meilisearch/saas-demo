@@ -11,7 +11,7 @@
             <div class="font-medium">{{ $organizationName }} CRM</div>
         </div>
 
-        <x-molecules.search-input></x-molecules.search-input>
+        <x-organisms.search-modal></x-organisms.search-modal>
 
         <div class="flex items-center gap-4">
             <a href="https://discord.gg/meilisearch" target="_blank" class="text-gray-400">

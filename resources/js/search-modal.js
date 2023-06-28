@@ -6,7 +6,7 @@ import 'vue-final-modal/style.css'
 
 
 // Components
-import Meilisearch from './components/Meilisearch.vue'
+import Meilisearch from './components/organisms/Meilisearch.vue'
 import ModalTrigger from './components/organisms/ModalTrigger.vue'
 
 const vfm = createVfm()

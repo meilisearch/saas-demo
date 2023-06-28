@@ -12,7 +12,7 @@ class DealController extends Controller
      */
     public function index()
     {
-        return view('deals')->with([
+        return view('deals.index')->with([
             'indexName' => 'deals:company_name:asc',
         ]);
     }
@@ -40,7 +40,7 @@ class DealController extends Controller
     {
         return view('deals.show')->with([
             'deal' => $deal,
-            'parentPageUrl' => route('deals.index')
+            'parentPageUrl' => route('deals.index'),
         ]);
     }
 

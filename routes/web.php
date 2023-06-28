@@ -28,9 +28,15 @@ Route::redirect('/', '/deals');
 // Login the user with ID 1 if no user is logged in
 Route::middleware([LoginAutomatically::class])->group(function () {
     
-    Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
+    Route::resource('companies', CompanyController::class)->only([
+        'index', 'show'
+    ]);   
+
+    Route::resource('contacts', ContactController::class)->only([
+        'index', 'show'
+    ]);
     
-    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
-    
-    Route::get('/deals', [DealController::class, 'index'])->name('deals.index');
+    Route::resource('deals', DealController::class)->only([
+        'index', 'show'
+    ]);
 });

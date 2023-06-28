@@ -15,16 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('companies')->with([
-            'userName' => $user->name,
-            'userAvatarUrl' => $user->avatar_url,
-            'userEmail' => $user->email,
-            'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
-            'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
-            'organizationName' => $user->organization->name,
+        return view('companies.index')->with([
             'indexName' => 'companies:name:asc',
-            'meilisearchToken' => $user->organization->meilisearch_token,
         ]);
     }
 
@@ -49,7 +41,11 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        $company->load(['contacts', 'deals']);
+        return view('companies.show')->with([
+            'company' => $company,
+            'parentPageUrl' => route('companies.index'),
+        ]);
     }
 
     /**

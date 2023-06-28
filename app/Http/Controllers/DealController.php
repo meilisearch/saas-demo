@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deal;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Vite;
 
 class DealController extends Controller
 {
@@ -15,16 +12,8 @@ class DealController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
         return view('deals')->with([
-            'userName' => $user->name,
-            'userAvatarUrl' => $user->avatar_url,
-            'userEmail' => $user->email,
-            'otherUserEmail' => User::where('email', '!=', $user->email)->first()->email,
-            'organizationLogoUrl' => Vite::asset('resources/assets/meilisearch-logo.svg'),
-            'organizationName' => $user->organization->name,
             'indexName' => 'deals:company_name:asc',
-            'meilisearchToken' => $user->organization->meilisearch_token,
         ]);
     }
 
@@ -49,7 +38,10 @@ class DealController extends Controller
      */
     public function show(Deal $deal)
     {
-        //
+        return view('deals.show')->with([
+            'deal' => $deal,
+            'parentPageUrl' => route('deals.index')
+        ]);
     }
 
     /**

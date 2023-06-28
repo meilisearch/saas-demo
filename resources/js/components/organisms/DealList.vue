@@ -1,20 +1,6 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
-
-const statusClass = (status: string) => {
-  switch (status) {
-    case 'won':
-      return 'bg-green-100 text-green-800'
-    case 'lost':
-      return 'bg-red-100 text-red-800'
-    case 'contacted':
-      return 'bg-yellow-100 text-yellow-800'
-    case 'to contact':
-      return 'bg-blue-100 text-blue-800'
-    default:
-      return 'bg-gray-100 text-gray-800'
-  }
-}
+import { navigateToDataUrl, dealStatusClass } from '../../helpers'
 </script>
 
 <template>
@@ -44,9 +30,10 @@ const statusClass = (status: string) => {
           </thead>
 
           <tbody class="divide-y divide-gray-200">
-            <tr v-for="deal in items" class="even:bg-gray-50">
+            <tr v-for="deal in items" class="cursor-pointer even:bg-gray-50 group" :data-url="`/deals/${deal.id}`"
+              @click="navigateToDataUrl">
               <td class="items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
-                <div class="inline-flex items-center gap-2">
+                <div class="inline-flex items-center gap-2 group-hover:text-blue-600">
                   <div class="inline-flex items-center w-6 h-6 p-1 overflow-hidden bg-gray-100 rounded">
                     <img :src="`https://logo.clearbit.com/${deal.company_url}`" alt="{{ deal.company_name }}">
                   </div>
@@ -61,7 +48,7 @@ const statusClass = (status: string) => {
                 <AisHighlight :hit="deal" attribute="contact_name" />
               </td>
               <td class="px-4 py-2 text-right text-gray-700 whitespace-nowrap">
-                <span class="px-2 py-1 rounded-full" :class="[statusClass(deal.status)]">
+                <span class="px-2 py-1 rounded-full" :class="[dealStatusClass(deal.status)]">
                   <AisHighlight :hit="deal" attribute="status" class="text-xs tracking-wide uppercase" />
                 </span>
               </td>

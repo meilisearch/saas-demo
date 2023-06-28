@@ -21,9 +21,10 @@ import { navigateToDataUrl } from '../../helpers';
           </thead>
 
           <tbody class="divide-y divide-gray-200">
-            <tr v-for="company in items" class="cursor-pointer even:bg-gray-50" :data-url="`/companies/${company.id}`"
-              @click="navigateToDataUrl">
-              <td class="flex items-center gap-2 px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+            <tr v-for="company in items" class="cursor-pointer even:bg-gray-50 group"
+              :data-url="`/companies/${company.id}`" @click="navigateToDataUrl">
+              <td
+                class="flex items-center gap-2 px-4 py-2 font-medium text-gray-900 whitespace-nowrap group-hover:text-blue-600">
                 <div class="inline-flex items-center w-6 h-6 p-1 overflow-hidden bg-gray-100 rounded">
                   <img :src="`https://logo.clearbit.com/${company.url}`" :alt="company.name">
                 </div>

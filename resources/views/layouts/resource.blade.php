@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="sticky top-0 mb-8 bg-gray-50 py-6 shadow-sm">
+    <div id="resource" class="sticky top-0 mb-8 bg-gray-50 py-6 shadow-sm">
         <div class="flex px-10">
             <h1 class="text-2xl font-semibold">
                 @yield('title')

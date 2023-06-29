@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VueFinalModal } from 'vue-final-modal'
 import ModalBox from './ModalBox.vue';
-import SearchBar from '../molecules/SearchBar.vue'
+import ModalSearchBar from '../organisms/ModalSearchBar.vue'
 import SearchResults from './SearchResults.vue'
 import CompanySearchResults from './CompanySearchResults.vue'
 import ContactSearchResults from './ContactSearchResults.vue'
@@ -10,20 +10,18 @@ import DealSearchResults from './DealSearchResults.vue'
 defineProps<{
   title?: string
 }>()
-const emit = defineEmits<{
-  (e: 'close'): void
-}>()
 </script>
 
 <template>
     <VueFinalModal :hide-overlay="false" display-directive="show" content-transition="vfm-fade"
     class="flex justify-center items-center"
-      content-class="relative rounded-lg bg-white dark:bg-gray-900"
+      content-class="relative rounded-lg dark:bg-gray-900"
       overlay-transition="vfm-fade"
+      :focus-trap="{ initialFocus: '#modalInputSearch' }"
     >
         <ModalBox>
             <template #searchbar>
-                <SearchBar placeholder='Search'/>
+                <ModalSearchBar placeholder='Search'/>
             </template>
             <template #results>
                 <div class="max-w-[30%] min-w-[30%]">

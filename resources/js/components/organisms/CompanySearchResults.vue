@@ -14,7 +14,7 @@
         }">
             <ul>
                 <li v-for="company, key in items" :key="key" class="my-2">
-                    <CompanySearchResultCard :company-name=company.name :company-logo-url="`https://logo.clearbit.com/${company.url}`">
+                    <CompanySearchResultCard :company-name=company.name :company-logo-url="`https://logo.clearbit.com/${company.url}`" :href="`/companies/${company.id}`">
                         <template #companyName>
                             <AisHighlight :hit="company" attribute="name" />
                         </template>

@@ -1,15 +1,17 @@
-@props([ 'href', 'dealStatus', 'companyName', 'value', 'dealOwner', 'dealProspect'])
+@props([ 'href', 'companyName', 'dealValue', 'dealStatus', 'dealContactName'])
 
 <x-molecules.search-result-card href="{{ $href }}">
     <x-slot:picture>
-        <x-dynamic-component :component="'atoms.' . $dealStatus . '-icon'"/>
     </x-slot>
     <x-slot:title>
         {{ $companyName }}
     </x-slot:title>
     <x-slot:subtitle>
-        {{ $value }}
+        {{ $dealValue }}
     </x-slot:subtitle>
-       <p> Owner: {{ $dealOwner }} </p>
-       <p> Prospect: {{ $dealProspect }} </p>
+       {{ $dealStatus}}
+       <div class="flex gap-2 items-center mt-4">
+        <x-atoms.contact-icon></x-atoms.contact-icon>
+        {{ $dealContactName}}
+    </div>
 </x-molecules.search-result-card>

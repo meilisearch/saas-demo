@@ -22,10 +22,22 @@ Install PHP dependencies:
 composer install
 ```
 
-Launch Docker services:
+Install Node dependencies:
+
+```sh
+sail yarn
+```
+
+Launch Docker services for local development:
 
 ```sh
 sail up
+```
+
+Run JavaScript dev server:
+
+```sh
+sail yarn dev
 ```
 
 ## Configuration

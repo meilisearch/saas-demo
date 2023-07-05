@@ -12,7 +12,7 @@
 
 This project uses [Sail](https://laravel.com/docs/10.x/sail) for local development using Docker. 
 
-> Replace `sail` by `./vendor/bin/sail` or create an alias to be able to use the following commands.
+> Make sure to follow the Sail documentation and prefix commands accordingly to be able to run them in Docker.
 
 ### Installation
 

@@ -43,6 +43,10 @@ class Organization extends Model
                 return;
             }
 
+            if ($organization->meilisearch_token) {
+                Log::debug('Organization ' . $organization->id . ': already has a token');
+                return;
+            }
             Log::debug('Generating tenant token for organization ID: ' . $organization->id);
 
             $searchRules = (object) [
@@ -58,7 +62,7 @@ class Organization extends Model
             Log::debug("Using MeiliSearch API key UID: {$meiliApiKeyUid}");
 
             $token = self::generateMeiliTenantToken($meiliApiKeyUid, $searchRules, $meiliApiKey);
-            Log::debug('Generated token: ' . $token);
+            Log::notice('Organization ' . $organization->id . ': saved token ' . $token);
 
             $organization->meilisearch_token = $token;
             $organization->save();

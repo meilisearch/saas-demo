@@ -1,3 +1,4 @@
 *
 !public/
 !.gitignore
+!Fortune500.csv

@@ -1,4 +1,4 @@
 @props(['href'])
-<a href="{{ $href }}" {{ $attributes->merge(['class' => 'relative block overflow-hidden rounded-md border border-gray-200 p-4 sm:p-6 lg:p-8 max-h-40 w-full']) }}>
+<a href="{{ $href }}" {{ $attributes->merge(['class' => 'relative block overflow-hidden rounded-md border border-gray-200 my-2 p-2 sm:p-4 lg:p-6 h-48']) }}>
     {{ $slot }}
 </a>

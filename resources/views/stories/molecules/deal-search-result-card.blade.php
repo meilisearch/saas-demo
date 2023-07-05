@@ -2,16 +2,15 @@
     'name' => 'Deal search result card',
     'args' => [
         'href' => '#',
-        'dealStatus' => 'lead',
         'companyName' => 'Meilisearch',
-        'value' => '$3000',
-        'dealOwner' => 'Jane Doe',
-        'dealProspect' => 'John Doe'
+        'dealValue' => '$3000',
+        'dealStatus' => 'lead',
+        'dealContactName' => 'Jane Doe'
     ],
     'argTypes' => [
     ],
 ])
 
-<x-molecules.deal-search-result-card href="{{ $href }}" dealStatus="{{ $dealStatus }}" companyName="{{ $companyName }}" value="{{ $value}}" dealOwner="{{ $dealOwner }}" dealProspect="{{ $dealProspect }}">
+<x-molecules.deal-search-result-card href="{{ $href }}" dealStatus="{{ $dealStatus }}" companyName="{{ $companyName }}" dealValue="{{ $delValue}}" dealContactName="{{ $dealContactName }}">
 
 </x-molecules.deal-search-result-card>

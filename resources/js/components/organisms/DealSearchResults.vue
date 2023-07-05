@@ -31,7 +31,7 @@
         }">
             <ul>
                 <li v-for="deal, key in items" :key="key">
-                    <DealSearchResultCard>
+                    <DealSearchResultCard :href="`/deals/${deal.id}`">
                         <template #companyName>
                             <AisHighlight :hit="deal" attribute="company_name"/>
                         </template>

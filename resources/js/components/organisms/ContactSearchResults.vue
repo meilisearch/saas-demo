@@ -14,7 +14,7 @@
         }">
             <ul>
                 <li v-for="contact, key in items" :key="key">
-                    <ContactSearchResultCard :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${contact.name}`">
+                    <ContactSearchResultCard :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${contact.name}`" :href="`/contacts/${contact.id}`">
                         <template #contactFullName>
                             <AisHighlight :hit="contact" attribute="name" />
                         </template>

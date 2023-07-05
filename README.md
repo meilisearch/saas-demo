@@ -14,6 +14,8 @@ This project uses [Sail](https://laravel.com/docs/10.x/sail) for local developme
 
 > Replace `sail` by `./vendor/bin/sail` or create an alias to be able to use the following commands.
 
+### Installation
+
 Install PHP dependencies:
 
 ```sh
@@ -26,14 +28,22 @@ Launch Docker services:
 sail up
 ```
 
-Launch storybook using Blast:
+## Configuration
+
+Copy `.env.example` as `.env` and update the credentials as needed.
+
+Setup your Meilisearch settings by running:
 
 ```sh
-sail artisan blast:launch
+artisan scout:sync-index-settings
 ```
 
-> Added `SHELL` environment variable to Docker service to handle [Webpack reloading](https://github.com/area17/blast/issues/22).
+Seed the database:
 
-## Contributing
+```sh
+artisan migrate:fresh --seed
+```
+
+## Conventions
 
 This project uses the [Blade Formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter) VS code extension to format `.blade.php` files.

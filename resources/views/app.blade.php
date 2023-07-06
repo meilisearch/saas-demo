@@ -5,7 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ env('APP_NAME') }}</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -18,7 +23,8 @@
 <body id="app">
     <x-layouts.base user-avatar-url="{{ $userAvatarUrl }}" user-name="{{ $userName }}"
         user-email="{{ $userEmail }}" other-user-email="{{ $otherUserEmail }}"
-        organization-logo-url="{{ $organizationLogoUrl }}" organization-name="{{ $organizationName }}" meilisearch-token="{{ $meilisearchToken }}">
+        organization-logo-url="{{ $organizationLogoUrl }}" organization-name="{{ $organizationName }}"
+        meilisearch-token="{{ $meilisearchToken }}">
         @yield('content')
 
     </x-layouts.base>

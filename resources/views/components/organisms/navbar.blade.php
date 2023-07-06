@@ -8,7 +8,10 @@
                     logo-url="{{ $organizationLogoUrl }}">
                 </x-atoms.organization-logo>
             </a>
-            <div class="font-medium">{{ $organizationName }} CRM</div>
+            <div>
+                <span class="font-medium">Meilisearch SaaS demo</span>
+                <span class="ml-2 text-sm italic text-gray-400">{{ $organizationName }} workspace</span>
+            </div>
         </div>
 
         <x-organisms.search-modal meilisearch-token="{{ $meilisearchToken }}"></x-organisms.search-modal>

@@ -19,7 +19,7 @@
                             <AisHighlight :hit="company" attribute="name" />
                         </template>
                         <template #associatedContactsNumber>
-                            Nb of associated contacts
+                            {{ company.number_of_contacts }}
                         </template>
                     </CompanySearchResultCard>
                 </li>

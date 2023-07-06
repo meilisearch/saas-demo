@@ -30,24 +30,8 @@
   </AisSearchBox>
 </template>
 
-
-
-.search-input-reset svg {
-  fill: var(--ashes-900);
-  transition: 0.3s;
+<style>
+#modalInputSearch::-webkit-search-cancel-button {
+  appearance: none;
 }
-
-button.search-input-reset {
-  background-color: transparent;
-  border: none;
-}
-
-button.search-input-reset[hidden]
-button.search-input-reset:focus-visible {
-  outline: none;
-}
-
-button.search-input-reset:focus-visible svg,
-button.search-input-reset:hover svg {
-  fill: var(--valhalla-100);
-}
+</style>

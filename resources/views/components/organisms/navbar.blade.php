@@ -26,6 +26,10 @@
             <a href="https://github.com/meilisearch/saas-demo" target="_blank" class="text-gray-400">
                 <x-atoms.github-icon></x-atoms.github-icon>
             </a>
+            <a href="https://www.meilisearch.com/?utm_campaign=saas-demo&utm_source=preview&utm_medium=navbar"
+                target="_blank" class="text-gray-400">
+                <x-atoms.web-icon></x-atoms.web-icon>
+            </a>
         </div>
     </div>
 </header>

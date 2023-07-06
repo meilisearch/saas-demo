@@ -24,8 +24,10 @@
             <slot name="companyName"></slot>
         </template>
         <template #subtitle>
-            <ContactIcon class="mr-2"/>
-            <slot name="associatedContactsNumber"></slot>
+            <div class="flex">
+                <ContactIcon class="mr-2"/>
+                <slot name="associatedContactsNumber"></slot>
+            </div>
         </template>
     </SearchResultCard>
 </template>

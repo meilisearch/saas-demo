@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     @vite('resources/css/app.css')
+
+    @env('production')
+    <!-- Analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="QNBPJXIV" defer></script>
+    @endenv
 </head>
 
 <body id="app">

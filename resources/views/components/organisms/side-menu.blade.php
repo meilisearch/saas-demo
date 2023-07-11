@@ -29,7 +29,7 @@
         </nav>
     </div>
 
-    <div class="sticky inset-x-0 bottom-0">
+    <div class="absolute inset-x-0 bottom-0">
         <div class="mb-3 text-center text-sm text-gray-400">
             Try switching to another user by clicking on the user below 👇
         </div>

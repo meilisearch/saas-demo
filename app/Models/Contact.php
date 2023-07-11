@@ -32,9 +32,7 @@ class Contact extends Model
     protected static function booted()
     {
         static::saved(function (Contact $contact) {
-            $company_id = $contact->company_id;
-            $company = Company::where('id', $company_id)->firstOrFail();
-            $company->save();
+            $contact->company->save();
         });
     }
 }

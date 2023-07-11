@@ -38,12 +38,16 @@ class CompanySeeder extends Seeder
         Organization::all()->each(function (Organization $organization) use ($companies) {
             $companiesToCreate = fake()->randomElements($companies, 20);
             foreach ($companiesToCreate as $row) {
-                $organization->companies()->save(
-                    Company::factory()->make([
-                        'name' => $row[$this->NAME_COLUMN_INDEX],
-                        'url' => $row[$this->URL_COLUMN_INDEX],
-                    ])
-                );
+                // Get company attributes from CSV row
+                $companyAttributes = [
+                    'name' => $row[$this->NAME_COLUMN_INDEX],
+                    'url' => $row[$this->URL_COLUMN_INDEX],
+                ];
+                // Create company belonging to organization
+                Company::factory()->for($organization)->create($companyAttributes);
+                // $organization->companies()->save(
+                //     Company::factory()->make($companyAttributes)
+                // );
             }
         });
     }

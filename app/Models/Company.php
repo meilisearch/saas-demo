@@ -34,4 +34,13 @@ class Company extends Model
         $parsedUrl = parse_url($this->url);
         return str_ireplace('www.', '', $parsedUrl['path']);
     }
+
+    public function toSearchableArray(): array
+    {
+        $array = $this->toArray();
+
+        $array['number_of_contacts'] = $this->contacts->count();
+
+        return $array;
+    }
 }

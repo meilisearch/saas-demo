@@ -63,6 +63,24 @@ sail yarn dev
 
 Copy `.env.example` as `.env` and update environment variables as needed.
 
+### Using Meilisearch with Laravel Sail
+
+When running Meilisearch through Sail, your `MEILISEARCH_HOST` should follow the  `http://meilisearch:port` form (instead of `localhost:port`.) However, your front-end application expect the real URL to your Meilisearch instant.
+
+This means that when running Meilisearch locally with Sail, your `.env` file will look like:
+
+```sh
+# This is the URL used by Laravel to access Meilisearch
+MEILISEARCH_HOST=http://meilisearch:7700
+
+# This is the URL used by JavaScript to access Meilisearch
+VITE_MEILISEARCH_HOST=http://localhost:7700
+```
+
+> See [Sail documentation](https://laravel.com/docs/10.x/sail#meilisearch).
+
+### Instructions
+
 Setup your Meilisearch settings by running:
 
 ```sh

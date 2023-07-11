@@ -1,7 +1,7 @@
 @props(['meilisearchToken'])
 
 <div id="search-modal">
-    <meilisearch index-name="companies" host="{{ env('MEILISEARCH_HOST') }}" api-key="{{ $meilisearchToken }}">
+    <meilisearch index-name="companies" api-key="{{ $meilisearchToken }}">
         <modal-trigger></modal-trigger>
     </meilisearch>
 </div>

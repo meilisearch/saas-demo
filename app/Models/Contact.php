@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Scout\Searchable;
+use App\Models\Company;
 
 class Contact extends Model
 {
@@ -19,12 +20,19 @@ class Contact extends Model
     public function toSearchableArray(): array
     {
         $array = $this->toArray();
-        
+
         $array['organization_id'] = $this->company->organization->id;
 
         $array['company_name'] = $this->company->name;
         $array['company_url'] = $this->company->url;
 
         return $array;
+    }
+
+    protected static function booted()
+    {
+        static::saved(function (Contact $contact) {
+            $contact->company->save();
+        });
     }
 }

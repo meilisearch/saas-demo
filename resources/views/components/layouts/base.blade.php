@@ -6,7 +6,7 @@
 </x-organisms.navbar>
 
 {{-- Side menu --}}
-<div class="fixed bottom-0 left-0 top-16 w-64 bg-red-300">
+<div class="fixed bottom-0 left-0 top-16 w-64">
     <x-organisms.side-menu user-avatar-url="{{ $userAvatarUrl }}" user-name="{{ $userName }}"
         user-email="{{ $userEmail }}" other-user-email="{{ $otherUserEmail }}"></x-organisms.side-menu>
 </div>

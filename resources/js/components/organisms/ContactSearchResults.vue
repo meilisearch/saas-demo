@@ -31,7 +31,7 @@
 
                 </li>
                 <li class="text-center mt-4">
-                    <Button @click="refineNext" button-text="Show more" :disabled="isLastPage"/>
+                    <Button @click="refineNext" button-text="See more contacts" :disabled="isLastPage"/>
                 </li>
             </ul>
         </template>

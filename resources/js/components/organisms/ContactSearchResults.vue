@@ -30,8 +30,8 @@
                     </ContactSearchResultCard>
 
                 </li>
-                <li v-if="!isLastPage" class="text-center mt-4">
-                    <Button @click="refineNext" button-text="Show more"/>
+                <li class="text-center mt-4">
+                    <Button @click="refineNext" button-text="Show more" :disabled="isLastPage"/>
                 </li>
             </ul>
         </template>

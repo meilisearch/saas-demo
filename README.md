@@ -16,7 +16,14 @@
 
 > Meilisearch is an open-source search engine that offers fast, relevant search out of the box. 
  
-👉 [Meilisearch repository](https://github.com/meilisearch/meilisearch)
+## ✨ Features
+
+This SaaS demo uses the following:
+
+- [Multi-search](https://www.meilisearch.com/docs/reference/api/multi_search?utm_campaign=saas-demo&utm_source=github&utm_medium=readme) (search across multiple indexes)
+- [Multi-tenancy](https://www.meilisearch.com/docs/learn/security/tenant_tokens?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)
+- [Filtering](https://www.meilisearch.com/docs/learn/fine_tuning_results/filtering?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)
+- [Sorting](https://www.meilisearch.com/docs/learn/fine_tuning_results/sorting?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)
 
 ## 🧰 Stack
 

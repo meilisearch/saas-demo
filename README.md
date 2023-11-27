@@ -16,6 +16,10 @@
 
 > Meilisearch is an open-source search engine that offers fast, relevant search out of the box. 
  
+## 💪 Looking to build this yourself?
+
+Read our [Complete guide to full-text search with Laravel](https://blog.meilisearch.com/laravel-full-text-search/?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)!
+
 ## ✨ Features
 
 This SaaS demo uses the following:

@@ -2,7 +2,7 @@
 import { AisIndex, AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
 import Avatar from '../atoms/Avatar.vue'
 import Button from '../atoms/Button.vue'
-import ContactSearchResultCard from '../molecules/ContactSearchResultCard.vue'
+import ContactSearchResultCard from '../molecules/ContactSearchResultItem.vue'
 import NoResults from '../atoms/NoResults.vue'
 </script>
 
@@ -16,7 +16,7 @@ import NoResults from '../atoms/NoResults.vue'
             }">
                 <ul class="space-y-3">
                     <li v-for="contact, key in items" :key="key">
-                        <ContactSearchResultCard :href="`/contacts/${contact.id}`"
+                        <ContactSearchResultItem :href="`/contacts/${contact.id}`"
                             :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${contact.name}`">
                             <template #name>
                                 <AisHighlight :hit="contact" attribute="name" />
@@ -24,24 +24,7 @@ import NoResults from '../atoms/NoResults.vue'
                             <template #email>
                                 <AisHighlight :hit="contact" attribute="email" class="break-all" />
                             </template>
-                        </ContactSearchResultCard>
-                        <!-- <ContactSearchResultCard
-                            :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${contact.name}`"
-                            :href="`/contacts/${contact.id}`">
-                            <template #contactFullName>
-                                <AisHighlight :hit="contact" attribute="name" />
-                            </template>
-                            <template #contactCompanyName>
-                                <AisHighlight :hit="contact" attribute="company_name" />
-                            </template>
-                            <template #contactEmail>
-                                <AisHighlight :hit="contact" attribute="email" class="break-all" />
-                            </template>
-                            <template #contactPhoneNumber>
-                                <AisHighlight :hit="contact" attribute="phone_number" />
-                            </template>
-                        </ContactSearchResultCard> -->
-
+                        </ContactSearchResultItem>
                     </li>
                     <li class="text-center mt-4">
                         <Button @click="refineNext" button-text="See more contacts" :disabled="isLastPage" />

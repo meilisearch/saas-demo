@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-    import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
-    import CompanySearchResultCard from '../molecules/CompanySearchResultCard.vue';
-    import NoResults from '../atoms/NoResults.vue';
-    import Button from '../atoms/Button.vue'
+import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
+import CompanySearchResultCard from '../molecules/CompanySearchResultCard.vue';
+import NoResults from '../atoms/NoResults.vue';
+import Button from '../atoms/Button.vue'
 </script>
 
 <template>
-    <AisInfiniteHits>
+    <AisInfiniteHits class="w-full">
         <template #default="{
             items,
             refineNext,
@@ -14,7 +14,9 @@
         }">
             <ul>
                 <li v-for="company, key in items" :key="key">
-                    <CompanySearchResultCard :company-name=company.name :company-logo-url="`https://logo.clearbit.com/${company.url}`" :href="`/companies/${company.id}`">
+                    <CompanySearchResultCard :company-name=company.name
+                        :company-logo-url="`https://logo.clearbit.com/${company.url}`"
+                        :href="`/companies/${company.id}`">
                         <template #companyName>
                             <AisHighlight :hit="company" attribute="name" />
                         </template>
@@ -23,11 +25,11 @@
                         </template>
                     </CompanySearchResultCard>
                 </li>
-                <li class="text-center mt-4">
-                    <Button @click="refineNext" button-text="See more companies" :disabled="isLastPage"/>
+                <li class="text-center mt-6">
+                    <Button @click="refineNext" button-text="See more companies" :disabled="isLastPage" />
                 </li>
             </ul>
         </template>
     </AisInfiniteHits>
-    <NoResults/>
+    <NoResults />
 </template>

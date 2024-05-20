@@ -8,35 +8,32 @@ import ContactSearchResults from './ContactSearchResults.vue'
 import DealSearchResults from './DealSearchResults.vue'
 
 defineProps<{
-  title?: string
+    title?: string
 }>()
 </script>
 
 <template>
     <VueFinalModal :hide-overlay="false" display-directive="show" content-transition="vfm-fade"
-    class="flex justify-center items-center"
-      content-class="relative rounded-lg dark:bg-gray-900"
-      overlay-transition="vfm-fade"
-      :focus-trap="{ initialFocus: '#modalInputSearch' }"
-    >
+        class="flex justify-center items-center" content-class="relative rounded-lg dark:bg-gray-900"
+        overlay-transition="vfm-fade" :focus-trap="{ initialFocus: '#modalInputSearch' }">
         <ModalBox>
             <template #searchbar>
-                <ModalSearchBar placeholder='Search'/>
+                <ModalSearchBar placeholder='Search' />
             </template>
             <template #results>
-                <div class="max-w-[30%] min-w-[30%]">
-                    <CompanySearchResults />
+                <CompanySearchResults />
+                <!-- <ContactSearchResults /> -->
+                <!-- <DealSearchResults /> -->
+                <!-- <div class="max-w-[30%] min-w-[30%]">
                 </div>
                 <SearchResults index-name="contacts">
                     <template #default>
-                        <ContactSearchResults/>
                     </template>
-                </SearchResults>
-                <SearchResults index-name="deals">
-                    <template #default>
-                        <DealSearchResults/>
+</SearchResults>
+<SearchResults index-name="deals">
+    <template #default>
                     </template>
-                </SearchResults>
+</SearchResults> -->
             </template>
         </ModalBox>
     </VueFinalModal>

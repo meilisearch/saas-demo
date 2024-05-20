@@ -26,12 +26,12 @@ import NoResults from '../atoms/NoResults.vue'
                             </template>
                         </ContactSearchResultsItem>
                     </li>
-                    <li class="text-center mt-4">
+                    <!-- <li class="text-center mt-4">
                         <Button @click="refineNext" button-text="See more contacts" :disabled="isLastPage" />
-                    </li>
+                    </li> -->
                 </ul>
             </template>
         </AisInfiniteHits>
-        <NoResults />
+        <!-- <NoResults /> -->
     </AisIndex>
 </template>

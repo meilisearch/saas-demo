@@ -28,6 +28,6 @@ const firstThreeItems = (items: any[]) => items.slice(0, 3)
                 </ul>
             </template>
         </AisInfiniteHits>
-        <NoResults />
+        <!-- <NoResults /> -->
     </AisIndex>
 </template>

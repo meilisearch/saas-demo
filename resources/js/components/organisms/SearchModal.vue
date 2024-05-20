@@ -6,6 +6,7 @@ import SearchResults from './SearchResults.vue'
 import CompanySearchResults from './CompanySearchResults.vue'
 import ContactSearchResults from './ContactSearchResults.vue'
 import DealSearchResults from './DealSearchResults.vue'
+import ResultsProvider from '../ResultsProvider.vue'
 
 defineProps<{
     title?: string
@@ -20,10 +21,14 @@ defineProps<{
             <template #searchbar>
                 <ModalSearchBar placeholder='Search' />
             </template>
-            <div class="font-semibold mb-4 text-indigo-600">Companies</div>
-            <CompanySearchResults class="pb-6 border-b mb-4" />
-            <div class="font-semibold mb-4 text-indigo-600">Contacts</div>
-            <ContactSearchResults />
+            <div class="relative">
+                <ResultsProvider>
+                    <div class="font-semibold mb-4 text-indigo-600">Companies</div>
+                    <CompanySearchResults class="pb-6 border-b mb-4" />
+                </ResultsProvider>
+                <div class="font-semibold mb-4 text-indigo-600">Contacts</div>
+                <ContactSearchResults />
+            </div>
         </SearchModalContainer>
     </VueFinalModal>
 </template>

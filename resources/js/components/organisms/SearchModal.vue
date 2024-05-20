@@ -20,8 +20,8 @@ defineProps<{
             <template #searchbar>
                 <ModalSearchBar placeholder='Search' />
             </template>
-            <ContactSearchResults />
             <!-- <CompanySearchResults /> -->
+            <ContactSearchResults />
             <template #results>
                 <!-- <DealSearchResults /> -->
                 <!-- <div class="max-w-[30%] min-w-[30%]">

@@ -2,7 +2,7 @@
 import { AisIndex, AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
 import Avatar from '../atoms/Avatar.vue'
 import Button from '../atoms/Button.vue'
-import ContactSearchResultCard from '../molecules/ContactSearchResultsItem.vue'
+import ContactSearchResultsItem from '../molecules/ContactSearchResultsItem.vue'
 import NoResults from '../atoms/NoResults.vue'
 </script>
 

@@ -1,39 +1,32 @@
 <script lang="ts" setup>
-    import SearchResultCard from './SearchResultCard.vue';
-    import Avatar from '../atoms/Avatar.vue';
-    import MailIcon from '../atoms/MailIcon.vue'
-    import PhoneIcon from '../atoms/PhoneIcon.vue'
+import SearchResultCard from './SearchResultCard.vue';
+import Avatar from '../atoms/Avatar.vue';
+import Card from '../atoms/Card.vue';
+import MailIcon from '../atoms/MailIcon.vue'
+import PhoneIcon from '../atoms/PhoneIcon.vue'
 
-    export interface Props {
+export interface Props {
     href?: string,
     contactAvatarUrl: string
-    }
+}
 
-    const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     href: '#'
-    })
+})
 </script>
 
 <template>
-    <SearchResultCard :href="props.href">
-        <template #picture>
-            <Avatar :image-url="props.contactAvatarUrl"/>
-        </template>
-        <template #title>
-            <slot name="contactFullName"></slot>
-        </template>
-        <template #subtitle>
-            <slot name="contactCompanyName"></slot>
-        </template>
-        <template #default>
-            <div class="flex items-center">
-                <MailIcon class="mr-2" />
-                <slot name="contactEmail"></slot>
+    <a :href="props.href" class="block">
+        <div class="sm:flex sm:justify-start sm:gap-4 items-center">
+            <Avatar :image-url="props.contactAvatarUrl" />
+            <div class="space-y-1">
+                <h3 class="font-bold text-gray-700 leading-none">
+                    <slot name="name"></slot>
+                </h3>
+                <div class="text-sm leading-none text-gray-400">
+                    <slot name="email"></slot>
+                </div>
             </div>
-            <div class="mt-2 flex items-center">
-                <PhoneIcon class="mr-2"/>
-                <slot name="contactPhoneNumber"></slot>
-            </div>
-        </template>
-    </SearchResultCard>
+        </div>
+    </a>
 </template>

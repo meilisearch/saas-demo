@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VueFinalModal } from 'vue-final-modal'
-import ModalBox from './ModalBox.vue';
+import SearchModalContainer from './SearchModalContainer.vue';
 import ModalSearchBar from '../organisms/ModalSearchBar.vue'
 import SearchResults from './SearchResults.vue'
 import CompanySearchResults from './CompanySearchResults.vue'
@@ -16,13 +16,13 @@ defineProps<{
     <VueFinalModal :hide-overlay="false" display-directive="show" content-transition="vfm-fade"
         class="flex justify-center items-center" content-class="relative rounded-lg dark:bg-gray-900"
         overlay-transition="vfm-fade" :focus-trap="{ initialFocus: '#modalInputSearch' }">
-        <ModalBox>
+        <SearchModalContainer>
             <template #searchbar>
                 <ModalSearchBar placeholder='Search' />
             </template>
+            <ContactSearchResults />
+            <!-- <CompanySearchResults /> -->
             <template #results>
-                <CompanySearchResults />
-                <!-- <ContactSearchResults /> -->
                 <!-- <DealSearchResults /> -->
                 <!-- <div class="max-w-[30%] min-w-[30%]">
                 </div>
@@ -35,6 +35,6 @@ defineProps<{
                     </template>
 </SearchResults> -->
             </template>
-        </ModalBox>
+        </SearchModalContainer>
     </VueFinalModal>
 </template>

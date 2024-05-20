@@ -20,21 +20,10 @@ defineProps<{
             <template #searchbar>
                 <ModalSearchBar placeholder='Search' />
             </template>
-            <!-- <CompanySearchResults /> -->
+            <div class="font-semibold mb-4 text-indigo-600">Companies</div>
+            <CompanySearchResults class="pb-6 border-b mb-4" />
+            <div class="font-semibold mb-4 text-indigo-600">Contacts</div>
             <ContactSearchResults />
-            <template #results>
-                <!-- <DealSearchResults /> -->
-                <!-- <div class="max-w-[30%] min-w-[30%]">
-                </div>
-                <SearchResults index-name="contacts">
-                    <template #default>
-                    </template>
-</SearchResults>
-<SearchResults index-name="deals">
-    <template #default>
-                    </template>
-</SearchResults> -->
-            </template>
         </SearchModalContainer>
     </VueFinalModal>
 </template>

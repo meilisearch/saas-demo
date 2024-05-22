@@ -4,7 +4,7 @@
         <header class="w-full mb-4 pb-6 border-b border-violet-200">
             <slot name="searchbar"></slot>
         </header>
-        <div class="overflow-y-scroll pr-3">
+        <div class="overflow-y-auto pr-3">
             <slot name="default"></slot>
         </div>
     </div>

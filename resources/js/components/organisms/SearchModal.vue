@@ -22,12 +22,27 @@ defineProps<{
                 <ModalSearchBar placeholder='Search' />
             </template>
             <div class="relative">
-                <ResultsProvider>
-                    <div class="font-semibold mb-4 text-indigo-600">Companies</div>
-                    <CompanySearchResults class="pb-6 border-b mb-4" />
+                <div class="font-semibold mb-4 text-indigo-600">Companies</div>
+                <ResultsProvider class="mb-4">
+                    <CompanySearchResults class="pb-6 border-b" />
+                    <template #empty>
+                        <div class="text-gray-400 text-sm">No companies found.</div>
+                    </template>
                 </ResultsProvider>
                 <div class="font-semibold mb-4 text-indigo-600">Contacts</div>
-                <ContactSearchResults />
+                <ResultsProvider class="mb-4">
+                    <ContactSearchResults />
+                    <template #empty>
+                        <div class="text-gray-400 text-sm">No contacts found.</div>
+                    </template>
+                </ResultsProvider>
+                <div class="font-semibold mb-4 text-indigo-600">Deals</div>
+                <ResultsProvider>
+                    <DealSearchResults />
+                    <template #empty>
+                        <div class="text-gray-400 text-sm">No deals found.</div>
+                    </template>
+                </ResultsProvider>
             </div>
         </SearchModalContainer>
     </VueFinalModal>

@@ -19,7 +19,3 @@ yarn-error.log
 /.vscode
 
 .DS_Store
-
-# yarn
-.pnp.*
-.yarn/*

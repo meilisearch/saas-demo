@@ -17,10 +17,10 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <a :href="props.href" class="block border border-indigo-100 rounded p-4 bg-indigo-50">
-    <h3 class="text-base font-bold text-indigo-900 sm:text-base mb-2">
+  <a :href="props.href" class="block border border-indigo-50 rounded p-4 bg-gray-50 group">
+    <div class="text-base font-bold text-gray-700 sm:text-base mb-2 group-hover:text-indigo-500">
       <slot name="name"></slot>
-    </h3>
+    </div>
     <div class="sm:flex sm:justify-start sm:gap-4 items-center content-center">
       <OrganizationLogo :organization-name="props.companyName" :logo-url="props.companyLogoUrl" />
       <div class="flex text-gray-700 space-x-2 text-sm">

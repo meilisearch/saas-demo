@@ -24,7 +24,7 @@ defineProps<{
             <div class="relative">
                 <div class="font-semibold mb-4 text-indigo-600">Companies</div>
                 <ResultsProvider class="mb-4">
-                    <CompanySearchResults class="pb-6 border-b" />
+                    <CompanySearchResults class="" />
                     <template #empty>
                         <div class="text-gray-400 text-sm">No companies found.</div>
                     </template>

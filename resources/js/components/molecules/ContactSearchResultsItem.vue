@@ -16,13 +16,13 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <a :href="props.href" class="block">
+    <a :href="props.href" class="block group">
         <div class="sm:flex sm:justify-start sm:gap-4 items-center">
             <Avatar :image-url="props.contactAvatarUrl" />
             <div class="space-y-1">
-                <h3 class="font-bold text-gray-700 leading-none">
+                <div class="font-bold text-gray-700 leading-none group-hover:text-indigo-500">
                     <slot name="name"></slot>
-                </h3>
+                </div>
                 <div class="text-sm leading-none text-gray-400">
                     <slot name="email"></slot>
                 </div>

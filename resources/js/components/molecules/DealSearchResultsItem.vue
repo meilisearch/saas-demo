@@ -21,9 +21,9 @@ const statusClass = (status: string) => {
 
 <template>
 
-  <a :href="props.href" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 py-2">
+  <a :href="props.href" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 py-2 group">
     <div class="flex">
-      <div class="font-semibold text-gray-700">
+      <div class="font-semibold text-gray-700 group-hover:text-indigo-500">
         <slot name="company-name"></slot>
       </div>
       <div class="ml-4">

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watchEffect } from 'vue';
 import { AisSearchBox } from 'vue-instantsearch/vue3/es'
 
 import SearchInput from '../atoms/SearchInput.vue'
@@ -9,7 +8,7 @@ import SearchModalLayout from './SearchModalLayout.vue';
 import CompanySearchResults from './CompanySearchResults.vue'
 import ContactSearchResults from './ContactSearchResults.vue'
 import DealSearchResults from './DealSearchResults.vue'
-
+import ResultsProvider from '../ResultsProvider.vue'
 </script>
 
 <template>

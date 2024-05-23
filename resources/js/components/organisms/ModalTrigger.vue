@@ -3,9 +3,6 @@ import { openModal, container as VueModalContainer } from 'jenesius-vue-modal'
 import { useMagicKeys, watchOnce, whenever } from '@vueuse/core'
 import SearchModal from './SearchModal.vue'
 import SearchButton from '../molecules/SearchButton.vue'
-import { nextTick, ref } from 'vue';
-
-const button = ref()
 
 const handleOpen = async () => {
   const modal = await openModal(SearchModal)
@@ -28,6 +25,6 @@ if (isMac) {
 </script>
 
 <template>
-  <SearchButton ref="button" @click="handleOpen" />
+  <SearchButton @click="handleOpen" />
   <VueModalContainer />
 </template>

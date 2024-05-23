@@ -1,35 +1,34 @@
 <script setup lang="ts">
-import { ModalsContainer, useModal } from 'vue-final-modal'
-import SearchModal from './SearchModal.vue'
-import SearchBarButton from '../molecules/SearchBarButton.vue'
+import { openModal, container as VueModalContainer } from 'jenesius-vue-modal'
 import { useMagicKeys, whenever } from '@vueuse/core'
+import SearchModal from './SearchModal.vue'
+import SearchButton from '../molecules/SearchButton.vue'
 
-const { open, close } = useModal({
-  component: SearchModal,
-  attrs: {
-    onClose() {
-      close()
-    },
-  }
-})
 const keys = useMagicKeys()
 const CmdK = keys['meta+K']
 const CtrlK = keys['Ctrl+K']
 
-const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
+const handleOpen = async () => {
+  const modal = await openModal(SearchModal)
+  modal.on('open', () => {
+    console.log('modal opened')
+    // document.getElementById('modalInputSearch')?.focus()
+  })
+}
 
-if ( isMac ) {
-    whenever(CmdK, () => {
-        open()
-    })
+const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
+if (isMac) {
+  whenever(CmdK, () => {
+    handleOpen()
+  })
 } else {
-    whenever(CtrlK, () => {
-        open()
-    })
+  whenever(CtrlK, () => {
+    handleOpen()
+  })
 }
 </script>
 
 <template>
-  <SearchBarButton @click="() => open()"/>
-  <ModalsContainer />
+  <SearchButton @click="handleOpen" />
+  <VueModalContainer />
 </template>

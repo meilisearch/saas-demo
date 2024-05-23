@@ -1,43 +1,43 @@
 <script setup lang="ts">
-import { VueFinalModal } from 'vue-final-modal'
-import ModalBox from './ModalBox.vue';
+import { nextTick, onMounted, ref } from 'vue';
+import SearchModalLayout from './SearchModalLayout.vue';
 import ModalSearchBar from '../organisms/ModalSearchBar.vue'
-import SearchResults from './SearchResults.vue'
 import CompanySearchResults from './CompanySearchResults.vue'
 import ContactSearchResults from './ContactSearchResults.vue'
 import DealSearchResults from './DealSearchResults.vue'
 
 defineProps<{
-  title?: string
+    title?: string
 }>()
 </script>
 
 <template>
-    <VueFinalModal :hide-overlay="false" display-directive="show" content-transition="vfm-fade"
-    class="flex justify-center items-center"
-      content-class="relative rounded-lg dark:bg-gray-900"
-      overlay-transition="vfm-fade"
-      :focus-trap="{ initialFocus: '#modalInputSearch' }"
-    >
-        <ModalBox>
-            <template #searchbar>
-                <ModalSearchBar placeholder='Search'/>
-            </template>
-            <template #results>
-                <div class="max-w-[30%] min-w-[30%]">
-                    <CompanySearchResults />
-                </div>
-                <SearchResults index-name="contacts">
-                    <template #default>
-                        <ContactSearchResults/>
-                    </template>
-                </SearchResults>
-                <SearchResults index-name="deals">
-                    <template #default>
-                        <DealSearchResults/>
-                    </template>
-                </SearchResults>
-            </template>
-        </ModalBox>
-    </VueFinalModal>
+  <SearchModalLayout class="mx-3">
+    <template #searchbar>
+      <ModalSearchBar autofocus ref="input" placeholder='Search' />
+    </template>
+    <div class="relative">
+      <div class="font-semibold mb-4 text-indigo-600">Companies</div>
+      <ResultsProvider class="mb-4">
+        <CompanySearchResults class="" />
+        <template #empty>
+          <div class="text-gray-400 text-sm">No companies found.</div>
+        </template>
+      </ResultsProvider>
+      <div class="font-semibold mb-4 text-indigo-600">Contacts</div>
+      <ResultsProvider class="mb-4">
+        <ContactSearchResults />
+        <template #empty>
+          <div class="text-gray-400 text-sm">No contacts found.</div>
+        </template>
+      </ResultsProvider>
+      <div class="font-semibold mb-4 text-indigo-600">Deals</div>
+      <ResultsProvider>
+        <DealSearchResults />
+        <template #empty>
+          <div class="text-gray-400 text-sm">No deals found.</div>
+        </template>
+      </ResultsProvider>
+    </div>
+  </SearchModalLayout>
 </template>

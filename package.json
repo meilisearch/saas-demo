@@ -18,8 +18,8 @@
     "dependencies": {
         "@meilisearch/instant-meilisearch": "^0.13.3",
         "@vueuse/core": "^10.2.1",
+        "jenesius-vue-modal": "^1.11.2",
         "vue": "^3.3.4",
-        "vue-final-modal": "^4.4.2",
         "vue-instantsearch": "^4.10.3"
     }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { openModal, container as VueModalContainer } from 'jenesius-vue-modal'
-import { useMagicKeys, watchOnce, whenever } from '@vueuse/core'
+import { useMagicKeys, whenever } from '@vueuse/core'
 import SearchModal from './SearchModal.vue'
 import SearchButton from '../molecules/SearchButton.vue'
 

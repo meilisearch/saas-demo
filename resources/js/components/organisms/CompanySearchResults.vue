@@ -9,8 +9,6 @@ const firstThreeItems = (items: any[]) => items.slice(0, 3)
     <AisInfiniteHits class="w-full">
       <template #default="{
         items,
-        refineNext,
-        isLastPage
       }">
         <ul class="grid grid-cols-3 gap-3">
           <li v-for="company in firstThreeItems(items)" :key="company.id">
@@ -25,6 +23,5 @@ const firstThreeItems = (items: any[]) => items.slice(0, 3)
         </ul>
       </template>
     </AisInfiniteHits>
-    <!-- <NoResults /> -->
   </AisIndex>
 </template>

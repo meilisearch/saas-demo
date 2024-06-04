@@ -18,34 +18,53 @@ import ResultsProvider from '../ResultsProvider.vue'
         <AisSearchBox>
           <template #default="{ currentRefinement, refine }">
             <form class="relative">
-              <SearchInput :value="currentRefinement" @input="refine($event.currentTarget.value)" autofocus />
+              <SearchInput
+                :value="currentRefinement"
+                autofocus
+                @input="refine($event.currentTarget.value)"
+              />
               <SearchIcon />
-              <SearchResetButton @click="refine('')" :hidden="!currentRefinement" />
+              <SearchResetButton
+                :hidden="!currentRefinement"
+                @click="refine('')"
+              />
             </form>
           </template>
         </AisSearchBox>
       </template>
 
       <div class="relative">
-        <div class="font-semibold mb-4 text-indigo-600">Companies</div>
+        <div class="font-semibold mb-4 text-indigo-600">
+          Companies
+        </div>
         <ResultsProvider class="mb-4">
           <CompanySearchResults class="" />
           <template #empty>
-            <div class="text-gray-400 text-sm">No companies found.</div>
+            <div class="text-gray-400 text-sm">
+              No companies found.
+            </div>
           </template>
         </ResultsProvider>
-        <div class="font-semibold mb-4 text-indigo-600">Contacts</div>
+        <div class="font-semibold mb-4 text-indigo-600">
+          Contacts
+        </div>
         <ResultsProvider class="mb-4">
           <ContactSearchResults />
           <template #empty>
-            <div class="text-gray-400 text-sm">No contacts found.</div>
+            <div class="text-gray-400 text-sm">
+              No contacts found.
+            </div>
           </template>
         </ResultsProvider>
-        <div class="font-semibold mb-4 text-indigo-600">Deals</div>
+        <div class="font-semibold mb-4 text-indigo-600">
+          Deals
+        </div>
         <ResultsProvider>
           <DealSearchResults />
           <template #empty>
-            <div class="text-gray-400 text-sm">No deals found.</div>
+            <div class="text-gray-400 text-sm">
+              No deals found.
+            </div>
           </template>
         </ResultsProvider>
       </div>

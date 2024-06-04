@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
 import NoResults from '../atoms/NoResults.vue'
-import Button from '../atoms/Button.vue'
-import ContactIcon from '../atoms/ContactIcon.vue'
-import MailIcon from '../atoms/MailIcon.vue'
 import DealSearchResultsItem from '../molecules/DealSearchResultsItem.vue'
 const statusClass = (status: string) => {
   switch (status) {
@@ -48,9 +45,6 @@ const statusClass = (status: string) => {
               </template>
             </DealSearchResultsItem>
           </li>
-          <!-- <li class="text-center mt-4">
-            <Button @click="refineNext" button-text="See more deals" :disabled="isLastPage" />
-          </li> -->
         </ul>
       </template>
     </AisInfiniteHits>

@@ -14,8 +14,8 @@
   <a href="https://discord.meilisearch.com/?utm_campaign=saas-demo&utm_source=github&utm_medium=readme">Discord</a>
 </h4>
 
-> Meilisearch is an open-source search engine that offers fast, relevant search out of the box. 
- 
+> Meilisearch is an open-source search engine that offers fast, relevant search out of the box.
+
 ## 💪 Looking to build this yourself?
 
 Read our [Complete guide to full-text search with Laravel](https://blog.meilisearch.com/laravel-full-text-search/?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)!
@@ -40,7 +40,7 @@ This project uses:
 - [Meilisearch](https://www.meilisearch.com/?utm_campaign=saas-demo&utm_source=github&utm_medium=readme) for fast, relevant search
 ## 🧑‍💻 Development
 
-This project uses [Sail](https://laravel.com/docs/10.x/sail) for local development using Docker. 
+This project uses [Sail](https://laravel.com/docs/10.x/sail) for local development using Docker.
 
 > Make sure to follow the Sail documentation and prefix commands accordingly to be able to run them in Docker.
 
@@ -106,4 +106,17 @@ artisan migrate:fresh --seed
 
 ## Conventions
 
+**Blade**
+
 This project uses the [Blade Formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter) VS code extension to format `.blade.php` files.
+
+**JavaScript and Vue**
+
+This project uses [ESLint](https://eslint.org/) to lint JavaScript and Vue files.
+
+An error with Eslint requires to have `resolutions` key in the `package.json` file:
+```json
+"resolutions": {
+  "strip-ansi": "6.0.1"
+},
+```

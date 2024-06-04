@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { AisIndex, AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
-import Avatar from '../atoms/Avatar.vue'
-import Button from '../atoms/Button.vue'
 import ContactSearchResultsItem from '../molecules/ContactSearchResultsItem.vue'
-import NoResults from '../atoms/NoResults.vue'
 </script>
 
 <template>
@@ -12,8 +9,6 @@ import NoResults from '../atoms/NoResults.vue'
       <template
         #default="{
           items,
-          refineNext,
-          isLastPage
         }"
       >
         <ul class="space-y-3">

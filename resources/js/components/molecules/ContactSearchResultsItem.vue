@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import SearchResultCard from './SearchResultCard.vue';
 import Avatar from '../atoms/Avatar.vue';
-import Card from '../atoms/Card.vue';
-import MailIcon from '../atoms/MailIcon.vue'
-import PhoneIcon from '../atoms/PhoneIcon.vue'
 export interface Props {
   href?: string,
   contactAvatarUrl: string

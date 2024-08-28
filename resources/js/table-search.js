@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import InstantSearch from 'vue-instantsearch/vue3/es'
 
 // Components
-import Meilisearch from './components/organisms/Meilisearch.vue'
+import Meilisearch from './components/InstantsearchProvider.vue'
 import SearchBar from './components/organisms/SearchBar.vue'
 import SearchFilterMenu from './components/organisms/SearchFilterMenu.vue'
 import SearchSortBy from './components/organisms/SearchSortBy.vue'
@@ -19,7 +19,7 @@ const app = createApp({
     CompanyList,
     ContactList,
     DealList,
-  }
+  },
 })
 
 app.use(InstantSearch)

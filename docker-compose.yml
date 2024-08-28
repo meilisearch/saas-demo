@@ -19,17 +19,14 @@ services:
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
             # Fixes issue with Blast crashing because of undefined $SHELL
-            SHELL: '/bin/bash'
+            SHELL: /bin/bash
         volumes:
             - '.:/var/www/html'
         networks:
             - sail
         depends_on:
             - mysql
-            - redis
             - meilisearch
-            - mailpit
-            - selenium
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -70,7 +67,7 @@ services:
             retries: 3
             timeout: 5s
     meilisearch:
-        image: 'getmeili/meilisearch:v1.2.0'
+        image: 'getmeili/meilisearch:v1.10.0'
         environment:
             MEILI_MASTER_KEY: '${MEILISEARCH_MASTER_KEY}'
         ports:
@@ -88,21 +85,6 @@ services:
                 - 'http://localhost:7700/health'
             retries: 3
             timeout: 5s
-    mailpit:
-        image: 'axllent/mailpit:latest'
-        ports:
-            - '${FORWARD_MAILPIT_PORT:-1025}:1025'
-            - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
-        networks:
-            - sail
-    selenium:
-        image: seleniarm/standalone-chromium
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        volumes:
-            - '/dev/shm:/dev/shm'
-        networks:
-            - sail
 networks:
     sail:
         driver: bridge

@@ -1,13 +1,17 @@
-import pluginVue from 'eslint-plugin-vue'
-export default [
-  // add more generic rulesets here, such as:
-  // js.configs.recommended,
-  ...pluginVue.configs['flat/recommended'],
-  // ...pluginVue.configs['flat/vue2-recommended'], // Use this if you are using Vue.js 2.x.
+import js from '@eslint/js'
+import eslintPluginVue from 'eslint-plugin-vue'
+import ts from 'typescript-eslint'
+
+export default ts.config(
+  js.configs.recommended,
+  ...ts.configs.recommended,
+  ...eslintPluginVue.configs['flat/recommended'],
   {
-    rules: {
-      // override/add rules settings here, such as:
-      // 'vue/no-unused-vars': 'error'
+    files: ['**/*.vue', '**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      }
     }
   }
-]
+)

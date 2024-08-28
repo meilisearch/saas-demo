@@ -7,11 +7,15 @@ export default ts.config(
   ...ts.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
   {
-    files: ['**/*.vue', '**/*.ts'],
+    files: ['**/*.vue', '**/*.ts', '**/*.js'],
     languageOptions: {
       parserOptions: {
-        parser: '@typescript-eslint/parser'
-      }
-    }
-  }
+        parser: '@typescript-eslint/parser',
+      },
+    },
+    rules: {
+      'comma-dangle': ['error', 'always-multiline'],
+      'quotes': ['error', 'single'],
+    },
+  },
 )

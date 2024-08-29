@@ -34,6 +34,7 @@ import { navigateToDataUrl, getDealStatusClass } from '../../utils'
           <tbody class="divide-y divide-gray-200">
             <tr
               v-for="deal in items"
+              :key="`deal-${deal.id}`"
               class="cursor-pointer even:bg-gray-50 group"
               :data-url="`/deals/${deal.id}`"
               @click="navigateToDataUrl"

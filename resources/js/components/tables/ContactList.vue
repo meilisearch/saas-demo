@@ -34,6 +34,7 @@ import { navigateToDataUrl } from '../../utils'
           <tbody class="divide-y divide-gray-200">
             <tr
               v-for="contact in items"
+              :key="`contact-${contact.id}`"
               :data-url="`/contacts/${contact.id}`"
               class="cursor-pointer group"
               @click="navigateToDataUrl"

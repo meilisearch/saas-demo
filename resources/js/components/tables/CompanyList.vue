@@ -25,6 +25,7 @@ import { navigateToDataUrl } from '../../utils'
           <tbody class="divide-y divide-gray-200">
             <tr
               v-for="company in items"
+              :key="`company-${company.id}`"
               class="cursor-pointer even:bg-gray-50 group"
               :data-url="`/companies/${company.id}`"
               @click="navigateToDataUrl"

@@ -6,7 +6,7 @@ const props = defineProps<{
   indexName: string,
 }>()
 
-const searchClient = instantMeiliSearch(
+const {searchClient} = instantMeiliSearch(
   import.meta.env.VITE_MEILISEARCH_HOST,
   props.apiKey,
 )
@@ -16,6 +16,7 @@ const searchClient = instantMeiliSearch(
   <ais-instant-search
     :search-client="searchClient"
     :index-name="props.indexName"
+    :future="{ preserveSharedStateOnUnmount: true }"
   >
     <slot name="default" />
   </ais-instant-search>

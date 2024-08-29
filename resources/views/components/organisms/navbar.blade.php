@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <x-organisms.search-modal meilisearch-token="{{ $meilisearchToken }}"></x-organisms.search-modal>
+        <x-organisms.app-search meilisearch-token="{{ $meilisearchToken }}"></x-organisms.app-search>
 
         <div class="flex items-center gap-4">
             <a href="https://discord.meilisearch.com/?utm_campaign=saas-demo&utm_source=preview&utm_medium=navbar"

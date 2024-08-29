@@ -16,6 +16,7 @@ export default ts.config(
     rules: {
       'comma-dangle': ['error', 'always-multiline'],
       'quotes': ['error', 'single'],
+      'semi': ['error', 'never'],
     },
   },
 )

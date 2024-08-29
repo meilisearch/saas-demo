@@ -255,12 +255,12 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@meilisearch/instant-meilisearch@^0.13.3":
-  version "0.13.6"
-  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.13.6.tgz#0a00762312f8d09a9e379e5447b697cbec283065"
-  integrity sha512-olVCeOXmignmfY+ML8ExgyPCLGkr/XPXcz0n8tajRFr4afDKzomxySGMfQXVok9SoyhB+xeNH/mEMhguxCwklg==
+"@meilisearch/instant-meilisearch@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@meilisearch/instant-meilisearch/-/instant-meilisearch-0.20.0.tgz#a2c0896db65a56849ce8caeffc500865a6bda50e"
+  integrity sha512-RvQ7mSk0Ebw0DOILOdCgIv2ZGimIuPEFVBE7zPnFIwplxa3xcOjJfKCX9jLTyLU14xa3nm9eT/4LQsGC23aUIA==
   dependencies:
-    meilisearch "^0.35.0"
+    meilisearch "^0.42.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1335,10 +1335,10 @@ magic-string@^0.30.10:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.5.0"
 
-meilisearch@^0.35.0:
-  version "0.35.1"
-  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.35.1.tgz#70784d72113a4b6977ad7bd38e4896d4876bed04"
-  integrity sha512-azI7vA4eCfBpUwngDTaG/VpiuO5zAMM35QrfREVPC+KnuNBKwBrwRaTwV+Dt18JDCgk/OWZJPaONYgBHSISbNQ==
+meilisearch@^0.42.0:
+  version "0.42.0"
+  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.42.0.tgz#af52091456baf48b7244ac5a55b2f279a948df38"
+  integrity sha512-pXaOPx/uhVGYVpejNuOcXifQVJlRVSxtvpgrGKb7ygmYo4qSNXkQXPxq1p0Tv+4/RsPJug3W04pcNnYXiqungA==
   dependencies:
     cross-fetch "^3.1.6"
 

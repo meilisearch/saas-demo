@@ -2,23 +2,28 @@
 import { openModal, container as VueModalContainer } from 'jenesius-vue-modal'
 import { useMagicKeys, whenever } from '@vueuse/core'
 import SearchModal from './SearchModal.vue'
-import SearchButton from '../molecules/SearchButton.vue'
+import SearchButton from './SearchButton.vue'
 
+const props = defineProps<{
+  apiKey: string,
+}>()
+
+// Modal logic
 const handleOpen = async () => {
-  const modal = await openModal(SearchModal)
+  await openModal(SearchModal, {
+    apiKey: props.apiKey,
+  })
 }
 
 // Keyboard shortcuts
 const keys = useMagicKeys()
-const CmdK = keys['meta+K']
-const CtrlK = keys['Ctrl+K']
 const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
 if (isMac) {
-  whenever(CmdK, () => {
+  whenever(keys['meta+K'], () => {
     handleOpen()
   })
 } else {
-  whenever(CtrlK, () => {
+  whenever(keys['Ctrl+K'], () => {
     handleOpen()
   })
 }

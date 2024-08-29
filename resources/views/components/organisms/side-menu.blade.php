@@ -6,7 +6,7 @@
             <x-molecules.side-menu-item href="{{ route('deals.index') }}"
                 is-active="{{ Route::currentRouteName() == 'deals.index' }}">
                 <x-slot:icon>
-                    <x-atoms.home-icon></x-atoms.home-icon>
+                    <x-ui.home-icon></x-ui.home-icon>
                 </x-slot:icon>
                 Deals
             </x-molecules.side-menu-item>
@@ -14,7 +14,7 @@
             <x-molecules.side-menu-item href="{{ route('contacts.index') }}"
                 is-active="{{ Route::currentRouteName() == 'contacts.index' }}">
                 <x-slot:icon>
-                    <x-atoms.contact-icon></x-atoms.contact-icon>
+                    <x-ui.contact-icon></x-ui.contact-icon>
                 </x-slot:icon>
                 Contacts
             </x-molecules.side-menu-item>
@@ -22,7 +22,7 @@
             <x-molecules.side-menu-item href="{{ route('companies.index') }}"
                 is-active="{{ Route::currentRouteName() == 'companies.index' }}">
                 <x-slot:icon>
-                    <x-atoms.company-icon></x-atoms.company-icon>
+                    <x-ui.company-icon></x-ui.company-icon>
                 </x-slot:icon>
                 Companies
             </x-molecules.side-menu-item>
@@ -37,7 +37,7 @@
             @csrf
             <input type="hidden" name="email" value="{{ $otherUserEmail }}">
             <button type="submit" class="flex w-full items-center gap-2 p-4 hover:bg-gray-100" title="Switch User">
-                <x-atoms.avatar image-url="{{ $userAvatarUrl }}"></x-atoms.avatar>
+                <x-ui.avatar image-url="{{ $userAvatarUrl }}"></x-ui.avatar>
 
                 <div class="text-left">
                     <p class="text-xs">

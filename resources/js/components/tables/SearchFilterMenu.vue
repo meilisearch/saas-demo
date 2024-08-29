@@ -12,7 +12,7 @@ const capitalize = (str: string) => {
 
 <template>
   <AisMenuSelect :attribute="props.attribute">
-    <template #default="{ items, canRefine, refine, sendEvent }">
+    <template #default="{ items, canRefine, refine }">
       <select
         :disabled="!canRefine"
         class="text-gray-700 border-gray-300 rounded-lg sm:text-sm"

@@ -8,16 +8,54 @@ import Avatar from '../ui/UserAvatar.vue'
 import UserGroupIcon from '../ui/icons/mini/UserGroupIcon.vue'
 import { formatDealAmount, getDealStatusClass } from '../../utils'
 
+import type { Hit } from 'meilisearch'
+
+interface DealData {
+  id: string;
+  name: string;
+  company_name: string;
+  value: number;
+  status: string;
+}
+
+interface ContactData {
+  id: string;
+  name: string;
+  email: string;
+  phone_number: string;
+}
+
+interface CompanyData {
+  id: string;
+  name: string;
+  url: string;
+  number_of_contacts: number;
+}
+
+type HitType = Hit<DealData | ContactData | CompanyData>
+
 const props = defineProps<{
-  hit: any,
+  hit: HitType
 }>()
+
+// Type guard functions
+function isDealHit(hit: HitType): hit is Hit<DealData> {
+  return hit._federation?.indexUid === 'deals'
+}
+
+function isContactHit(hit: HitType): hit is Hit<ContactData> {
+  return hit._federation?.indexUid === 'contacts'
+}
+
+function isCompanyHit(hit: HitType): hit is Hit<CompanyData> {
+  return hit._federation?.indexUid === 'companies'
+}
 
 const CONFIG = {
   companies: {
     type: 'company',
     iconComponent: BuildingOfficeIcon,
     imageComponent: OrganizationLogo,
-    imageSrc: ({ url }: { url: string }) => `https://logo.clearbit.com/${url}`,
     imageComponentBind: {
       class: 'w-16 h-16',
     },
@@ -26,7 +64,6 @@ const CONFIG = {
     type: 'contact',
     iconComponent: UserIcon,
     imageComponent: Avatar,
-    imageSrc: ({ name }: { name: string }) => `https://api.dicebear.com/6.x/initials/svg?seed=${name}`,
     imageComponentBind: {
       size: 'xl',
     },
@@ -35,11 +72,21 @@ const CONFIG = {
     type: 'deal',
     iconComponent: BriefcaseIcon,
     imageComponent: OrganizationLogo,
-    imageSrc: ({ company_name }: { company_name: string }) => `https://api.dicebear.com/6.x/initials/svg?seed=${company_name}`,
     imageComponentBind: {
       class: 'w-16 h-16',
     },
   },
+}
+
+const getImageSrc = (hit: HitType) => {
+  if (isCompanyHit(hit)) {
+    return `https://logo.clearbit.com/${hit.url}`
+  } else if (isContactHit(hit)) {
+    return `https://api.dicebear.com/6.x/initials/svg?seed=${hit.name}`
+  } else if (isDealHit(hit)) {
+    return `https://api.dicebear.com/6.x/initials/svg?seed=${hit.company_name}`
+  }
+  return ''
 }
 
 const hitConfig = computed(() => {
@@ -50,6 +97,8 @@ const href = computed(() => {
   const indexName = props.hit._federation?.indexUid
   return `/${indexName}/${props.hit.id}`
 })
+
+
 </script>
 
 <template>
@@ -66,27 +115,30 @@ const href = computed(() => {
         <div>
           <component
             :is="hitConfig.imageComponent"
-            v-bind="{ src: hitConfig.imageSrc(props.hit), ...hitConfig.imageComponentBind }"
+            v-bind="{ src: getImageSrc(props.hit), ...hitConfig.imageComponentBind }"
             class="w-16 h-16"
           />
         </div>
         <div>
-          <div class="text-lg font-semibold ">{{ props.hit.name ?? props.hit.company_name }}</div>
+          <div class="text-lg font-semibold ">
+            <span v-if="isDealHit(props.hit)">{{ props.hit.company_name }}</span>
+            <span v-else>{{ props.hit.name }}</span>
+          </div>
           <div
-            v-if="hitConfig.type === 'company'"
+            v-if="isCompanyHit(props.hit)"
             class="flex items-center gap-2 text-gray-500"
           >
             <UserGroupIcon />
             <span>{{ props.hit.number_of_contacts }} contacts</span>
           </div>
           <div
-            v-else-if="hitConfig.type === 'contact'"
+            v-else-if="isContactHit(props.hit)"
             class="text-gray-500 "
           >
             {{ props.hit.email }}
           </div>
           <div
-            v-else-if="hitConfig.type === 'deal'"
+            v-else-if="isDealHit(props.hit)"
             class="flex items-center gap-2 text-gray-500"
           >
             <span>{{ formatDealAmount(props.hit.value) }}</span>

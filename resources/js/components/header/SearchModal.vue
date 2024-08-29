@@ -10,7 +10,6 @@ import CompanyCard from './CompanyCard.vue'
 import ContactCard from './ContactCard.vue'
 import DealCard from './DealCard.vue'
 import SearchModalLayout from './SearchModalLayout.vue'
-import { getStatusClass } from '../../utils'
 
 const props = defineProps<{
   apiKey: string,
@@ -97,25 +96,11 @@ watch(query, (value) => {
             />
             <DealCard
               v-else-if="hit._federation?.indexUid === 'deals'"
+              :company-name="hit.company_name"
+              :deal-status="hit.status"
+              :deal-amount="hit.value"
               :href="`/deals/${hit.id}`"
-            >
-              <template #company-name>
-                {{ hit.company_name }}
-              </template>
-              <template #status>
-                <span
-                  class="px-2 py-1 rounded-full text-xs tracking-tight uppercase"
-                  :class="[getStatusClass(hit.status)]"
-                >
-                  {{ hit.status }}
-                </span>
-              </template>
-              <template #value>
-                {{ new Intl.NumberFormat('en-US', {
-                  style: 'currency', currency: 'USD',
-                }).format(hit.value) }}
-              </template>
-            </DealCard>
+            />
           </li>
         </ul>
       </div>

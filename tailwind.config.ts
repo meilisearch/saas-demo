@@ -1,16 +1,20 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+import formsPlugin from '@tailwindcss/forms'
+import plugin from 'tailwindcss/plugin'
+
+export default {
   content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue"
+    './resources/**/*.blade.php',
+    './resources/**/*.js',
+    './resources/**/*.ts',
+    './resources/**/*.vue',
   ],
   theme: {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwindcss/plugin')(function ({addBase}) {
+    formsPlugin,
+    plugin(function ({addBase}) {
       addBase({
         '[type="search"]::-webkit-search-decoration': {display: 'none'},
         '[type="search"]::-webkit-search-cancel-button': {display: 'none'},
@@ -19,4 +23,4 @@ module.exports = {
       })
     }),
   ],
-}
+} satisfies Config

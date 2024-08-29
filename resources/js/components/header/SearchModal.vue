@@ -82,11 +82,7 @@ watch(query, (value) => {
               :company-logo-url="`https://logo.clearbit.com/${hit.url}`"
               :contact-count="hit.number_of_contacts"
               :href="`/companies/${hit.id}`"
-            >
-              <template #name>
-                {{ hit.name }}
-              </template>
-            </CompanyCard>
+            />
             <ContactCard
               v-else-if="hit._federation?.indexUid === 'contacts'"
               :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${hit.name}`"

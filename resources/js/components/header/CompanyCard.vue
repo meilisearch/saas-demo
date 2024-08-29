@@ -1,35 +1,39 @@
 <script lang="ts" setup>
 import OrganizationLogo from '../atoms/OrganizationLogo.vue'
-import ContactIcon from '../atoms/ContactIcon.vue'
-export interface Props {
-  href?: string,
+import UserGroupIcon from '../ui/micro/UserGroupIcon.vue'
+import ResultCard from './ResultCard.vue'
+import BuildingOfficeIcon from '../ui/micro/BuildingOfficeIcon.vue'
+
+const props = withDefaults(defineProps<{
+  href: string,
   companyName: string,
   companyLogoUrl?: string,
   contactCount: number
-}
-const props = withDefaults(defineProps<Props>(), {
-  href: '#',
+}>(), {
   companyLogoUrl: 'https://api.dicebear.com/6.x/icons/svg?icon=briefcase&size=32',
 })
 </script>
 
 <template>
-  <a
+  <ResultCard
     :href="props.href"
-    class="block border border-indigo-50 rounded p-4 bg-gray-50 group"
   >
-    <div class="text-base font-bold text-gray-700 sm:text-base mb-2 group-hover:text-indigo-500">
-      <slot name="name" />
-    </div>
-    <div class="sm:flex sm:justify-start sm:gap-4 items-center content-center">
+    <div class="flex items-center gap-4">
+      <BuildingOfficeIcon class="text-gray-500 group-hover:text-indigo-500" />
       <OrganizationLogo
-        :organization-name="props.companyName"
-        :logo-url="props.companyLogoUrl"
+        :src="props.companyLogoUrl"
+        :alt="props.companyName"
+        class="w-8 h-8"
       />
-      <div class="flex text-gray-700 space-x-2 text-sm">
-        <ContactIcon />
-        <span>{{ props.contactCount }} contacts</span>
+      <div class="font-semibold text-gray-700 ">
+        {{ props.companyName }}
+      </div>
+      <div class="flex ml-auto">
+        <div class="flex items-center space-x-2 text-sm text-gray-400">
+          <UserGroupIcon />
+          <span>{{ props.contactCount }} contacts</span>
+        </div>
       </div>
     </div>
-  </a>
+  </ResultCard>
 </template>

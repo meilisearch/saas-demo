@@ -1,6 +1,8 @@
-export const navigateToDataUrl = (event) => {
-  const parentRow = event.target.closest('tr')
-  window.location.href = parentRow.dataset.url
+export const navigateToDataUrl = (event: MouseEvent) => {
+  const parentRow = (event.target as HTMLElement).closest('tr')
+  if (parentRow && parentRow.dataset.url) {
+    window.location.href = parentRow.dataset.url
+  }
 }
 
 export const getDealStatusClass = (status: string) => {

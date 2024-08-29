@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <x-organisms.app-search meilisearch-token="{{ $meilisearchToken }}"></x-organisms.app-search>
+        <x-app-search meilisearch-token="{{ $meilisearchToken }}"></x-app-search>
 
         <div class="flex items-center gap-4">
             <a href="https://discord.meilisearch.com/?utm_campaign=saas-demo&utm_source=preview&utm_medium=navbar"

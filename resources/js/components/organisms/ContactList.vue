@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
-import { navigateToDataUrl } from '../../helpers'
+import { navigateToDataUrl } from '../../utils'
 </script>
 
 <template>

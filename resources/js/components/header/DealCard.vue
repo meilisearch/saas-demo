@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import ResultCard from './ResultCard.vue'
 import BriefcaseIcon from '../icons/micro/BriefcaseIcon.vue'
-import { getStatusClass, formatDealAmount } from '../../utils'
+import { getDealStatusClass, formatDealAmount } from '../../utils'
 
 const props = defineProps<{
   href: string
@@ -22,7 +22,7 @@ const props = defineProps<{
       </div>
       <div
         class="inline-flex items-center h-5 px-2 text-xs font-semibold rounded-full"
-        :class="[getStatusClass(props.dealStatus)]"
+        :class="[getDealStatusClass(props.dealStatus)]"
       >
         {{ props.dealStatus }}
       </div>

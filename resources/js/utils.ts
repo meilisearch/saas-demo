@@ -1,4 +1,9 @@
-export const getStatusClass = (status: string) => {
+export const navigateToDataUrl = (event) => {
+  const parentRow = event.target.closest('tr')
+  window.location.href = parentRow.dataset.url
+}
+
+export const getDealStatusClass = (status: string) => {
   switch (status) {
     case 'won':
       return 'bg-green-50 text-green-500'

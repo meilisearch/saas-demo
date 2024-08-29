@@ -6,7 +6,7 @@ import BriefcaseIcon from '../icons/micro/BriefcaseIcon.vue'
 import OrganizationLogo from '../ui/OrganizationLogo.vue'
 import Avatar from '../ui/Avatar.vue'
 import UserGroupIcon from '../icons/mini/UserGroupIcon.vue'
-import { formatDealAmount, getStatusClass } from '../../utils'
+import { formatDealAmount, getDealStatusClass } from '../../utils'
 
 const props = defineProps<{
   hit: any,
@@ -92,7 +92,7 @@ const href = computed(() => {
             <span>{{ formatDealAmount(props.hit.value) }}</span>
             <div
               class="inline-flex items-center h-5 px-2 text-xs font-semibold rounded-full"
-              :class="[getStatusClass(props.hit.status)]"
+              :class="[getDealStatusClass(props.hit.status)]"
             >
               {{ props.hit.status }}
             </div>

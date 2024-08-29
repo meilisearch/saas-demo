@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { Meilisearch } from 'meilisearch'
 import type { SearchResponse } from 'meilisearch'
 
@@ -10,6 +10,7 @@ import CompanyCard from './CompanyCard.vue'
 import ContactCard from './ContactCard.vue'
 import DealCard from './DealCard.vue'
 import SearchModalLayout from './SearchModalLayout.vue'
+import TopResultCard from './TopResultCard.vue'
 
 const props = defineProps<{
   apiKey: string,
@@ -21,7 +22,7 @@ const meilisearch = new Meilisearch({
   apiKey: props.apiKey,
 })
 
-// Search logic
+// Search
 const results = ref<SearchResponse|null>(null)
 const search = async (query: string) => {
   console.log('search', query)
@@ -38,12 +39,24 @@ const search = async (query: string) => {
   console.log('results', results.value)
 }
 
-// Query logic
+// Query
 const query = ref('')
 watch(query, (value) => {
   if (value) {
     search(value)
+  } else {
+    results.value = null
   }
+})
+
+// Results
+const topResult = computed(() => {
+  if (results.value) return results.value.hits[0]
+  return null
+})
+const remainingResults = computed(() => {
+  if (results.value) return results.value.hits.slice(1)
+  return []
 })
 </script>
 
@@ -66,39 +79,71 @@ watch(query, (value) => {
         </form>
       </template>
 
-      <div>
-        <div>
-          Top result
-        </div>
+      <div
+        v-show="query"
+        class="space-y-4"
+      >
+        <template v-if="topResult">
+          <div class="text-xs font-semibold tracking-wide text-gray-500 uppercase">
+            Top result
+          </div>
+          <TopResultCard
+            :hit="topResult"
+            class="max-w-sm"
+          />
+          <template v-if="remainingResults.length">
+            <div class="text-xs font-semibold tracking-wide text-gray-500 uppercase">
+              Other results
+            </div>
+            <ul class="space-y-3">
+              <li
+                v-for="hit in remainingResults"
+                :key="`${hit._federation?.indexUid}-${hit.id}`"
+              >
+                <CompanyCard
+                  v-if="hit._federation?.indexUid === 'companies'"
+                  :company-name="hit.name"
+                  :company-logo-url="`https://logo.clearbit.com/${hit.url}`"
+                  :contact-count="hit.number_of_contacts"
+                  :href="`/companies/${hit.id}`"
+                />
+                <ContactCard
+                  v-else-if="hit._federation?.indexUid === 'contacts'"
+                  :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${hit.name}`"
+                  :contact-name="hit.name"
+                  :contact-email="hit.email"
+                  :href="`/contacts/${hit.id}`"
+                />
+                <DealCard
+                  v-else-if="hit._federation?.indexUid === 'deals'"
+                  :company-name="hit.company_name"
+                  :deal-status="hit.status"
+                  :deal-amount="hit.value"
+                  :href="`/deals/${hit.id}`"
+                />
+              </li>
+            </ul>
+          </template>
+        </template>
+        <template v-else>
+          <div class="text-center text-gray-400">
+            No results found for <em>{{ query }}</em>
+          </div>
+        </template>
+      </div>
 
-        <ul class="space-y-3">
-          <li
-            v-for="hit in results?.hits"
-            :key="`${hit._federation?.indexUid}-${hit.id}`"
-          >
-            <CompanyCard
-              v-if="hit._federation?.indexUid === 'companies'"
-              :company-name="hit.name"
-              :company-logo-url="`https://logo.clearbit.com/${hit.url}`"
-              :contact-count="hit.number_of_contacts"
-              :href="`/companies/${hit.id}`"
-            />
-            <ContactCard
-              v-else-if="hit._federation?.indexUid === 'contacts'"
-              :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${hit.name}`"
-              :contact-name="hit.name"
-              :contact-email="hit.email"
-              :href="`/contacts/${hit.id}`"
-            />
-            <DealCard
-              v-else-if="hit._federation?.indexUid === 'deals'"
-              :company-name="hit.company_name"
-              :deal-status="hit.status"
-              :deal-amount="hit.value"
-              :href="`/deals/${hit.id}`"
-            />
-          </li>
-        </ul>
+      <div
+        v-show="!query"
+        class="flex flex-col justify-center h-full"
+      >
+        <img
+          src="../../../assets/loading-illustration.svg"
+          alt="Loading illustration"
+          class="w-32 mx-auto"
+        >
+        <div class="mt-10 text-center text-gray-300">
+          Search results will appear here.
+        </div>
       </div>
     </SearchModalLayout>
   </div>

@@ -5,9 +5,8 @@ const props = defineProps<{
 }>()
 </script>
 
-
 <template>
-  <div>
+  <div class="flex items-center justify-center">
     <span class="sr-only">Logo</span>
     <img
       :src="props.src"

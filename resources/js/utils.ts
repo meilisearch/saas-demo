@@ -12,3 +12,9 @@ export const getStatusClass = (status: string) => {
       return 'bg-gray-50 text-gray-500'
   }
 }
+
+export const formatDealAmount = (amount: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency', currency: 'USD',
+  }).format(amount)
+}

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import OrganizationLogo from '../atoms/OrganizationLogo.vue'
-import UserGroupIcon from '../ui/micro/UserGroupIcon.vue'
+import OrganizationLogo from '../ui/OrganizationLogo.vue'
+import UserGroupIcon from '../icons/micro/UserGroupIcon.vue'
 import ResultCard from './ResultCard.vue'
-import BuildingOfficeIcon from '../ui/micro/BuildingOfficeIcon.vue'
+import BuildingOfficeIcon from '../icons/micro/BuildingOfficeIcon.vue'
 
 const props = withDefaults(defineProps<{
   href: string,

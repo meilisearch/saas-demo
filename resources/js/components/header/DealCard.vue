@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import ResultCard from './ResultCard.vue'
-import BriefcaseIcon from '../ui/micro/BriefcaseIcon.vue'
-import { getStatusClass } from '../../utils'
+import BriefcaseIcon from '../icons/micro/BriefcaseIcon.vue'
+import { getStatusClass, formatDealAmount } from '../../utils'
 
 const props = defineProps<{
   href: string
@@ -28,9 +28,7 @@ const props = defineProps<{
       </div>
       <div class="flex gap-4 ml-auto">
         <div class="text-sm text-gray-400">
-          {{ new Intl.NumberFormat('en-US', {
-            style: 'currency', currency: 'USD',
-          }).format(props.dealAmount) }}
+          {{ formatDealAmount(props.dealAmount) }}
         </div>
       </div>
     </div>

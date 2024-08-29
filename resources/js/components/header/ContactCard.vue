@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Avatar from '../atoms/Avatar.vue'
-import UserIcon from '../ui/micro/UserIcon.vue'
+import Avatar from '../ui/Avatar.vue'
+import UserIcon from '../icons/micro/UserIcon.vue'
 import ResultCard from './ResultCard.vue'
 
 const props = defineProps<{
@@ -19,7 +19,7 @@ const props = defineProps<{
     <div class="sm:flex sm:justify-start sm:gap-4 items-center">
       <UserIcon class="text-gray-500 group-hover:text-indigo-500" />
       <Avatar
-        :image-url="props.contactAvatarUrl"
+        :src="props.contactAvatarUrl"
       />
       <div class="space-y-1">
         <div class="font-semibold text-gray-700 leading-none group-hover:text-gray-800">

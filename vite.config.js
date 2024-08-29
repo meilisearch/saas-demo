@@ -1,15 +1,15 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import laravel from 'laravel-vite-plugin'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css', 
+                'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/search-modal',
-                'resources/js/table-search'
+                'resources/js/app-search',
+                'resources/js/table-search',
             ],
             refresh: true,
         }),
@@ -36,5 +36,5 @@ export default defineConfig({
       alias: {
         'vue': 'vue/dist/vue.esm-bundler',
       },
-    }
-});
+    },
+})

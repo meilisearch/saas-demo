@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import InstantSearch from 'vue-instantsearch/vue3/es'
 
 // Components
-import InstantsearchProvider from './components/InstantsearchProvider.vue'
+import InstantsearchProvider from './components/tables/InstantsearchProvider.vue'
 import SearchBar from './components/tables/SearchBar.vue'
 import SearchFilterMenu from './components/tables/SearchFilterMenu.vue'
 import SearchSortBy from './components/tables/SearchSortBy.vue'

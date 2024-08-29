@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import BuildingOfficeIcon from '../icons/micro/BuildingOfficeIcon.vue'
-import UserIcon from '../icons/micro/UserIcon.vue'
-import BriefcaseIcon from '../icons/micro/BriefcaseIcon.vue'
+import BuildingOfficeIcon from '../ui/icons/micro/BuildingOfficeIcon.vue'
+import UserIcon from '../ui/icons/micro/UserIcon.vue'
+import BriefcaseIcon from '../ui/icons/micro/BriefcaseIcon.vue'
 import OrganizationLogo from '../ui/OrganizationLogo.vue'
 import Avatar from '../ui/Avatar.vue'
-import UserGroupIcon from '../icons/mini/UserGroupIcon.vue'
+import UserGroupIcon from '../ui/icons/mini/UserGroupIcon.vue'
 import { formatDealAmount, getDealStatusClass } from '../../utils'
 
 const props = defineProps<{

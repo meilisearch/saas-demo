@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import OrganizationLogo from '../ui/OrganizationLogo.vue'
-import UserGroupIcon from '../icons/micro/UserGroupIcon.vue'
+import UserGroupIcon from '../ui/icons/micro/UserGroupIcon.vue'
 import ResultCard from './ResultCard.vue'
-import BuildingOfficeIcon from '../icons/micro/BuildingOfficeIcon.vue'
+import BuildingOfficeIcon from '../ui/icons/micro/BuildingOfficeIcon.vue'
 
 const props = withDefaults(defineProps<{
   href: string,
@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<{
   companyLogoUrl?: string,
   contactCount: number
 }>(), {
-  companyLogoUrl: 'https://api.dicebear.com/6.x/icons/svg?icon=briefcase&size=32',
+  companyLogoUrl: 'https://api.dicebear.com/6.x/ui/icons/svg?icon=briefcase&size=32',
 })
 </script>
 

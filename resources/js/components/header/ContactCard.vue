@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Avatar from '../ui/Avatar.vue'
-import UserIcon from '../icons/micro/UserIcon.vue'
+import UserIcon from '../ui/icons/micro/UserIcon.vue'
 import ResultCard from './ResultCard.vue'
 
 const props = defineProps<{

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import ResultCard from './ResultCard.vue'
-import BriefcaseIcon from '../icons/micro/BriefcaseIcon.vue'
+import BriefcaseIcon from '../ui/icons/micro/BriefcaseIcon.vue'
 import { getDealStatusClass, formatDealAmount } from '../../utils'
 
 const props = defineProps<{

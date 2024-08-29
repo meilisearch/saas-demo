@@ -38,9 +38,10 @@ This project uses:
 - [TailwindCSS 3](https://tailwindcss.com/) and [HyperUI](https://www.hyperui.dev/) components
 - [Heroicons 2](https://heroicons.com/) and social medias icons from [icons8](https://icons8.com/icons/collections/EnE9mEHAiX2D)
 - [Meilisearch](https://www.meilisearch.com/?utm_campaign=saas-demo&utm_source=github&utm_medium=readme) for fast, relevant search
+
 ## 🧑‍💻 Development
 
-This project uses [Sail](https://laravel.com/docs/10.x/sail) for local development using Docker.
+This project uses [Sail](https://laravel.com/docs/10.x/sail), a local development environment based on Docker compose.
 
 > Make sure to follow the Sail documentation and prefix commands accordingly to be able to run them in Docker.
 
@@ -49,7 +50,7 @@ This project uses [Sail](https://laravel.com/docs/10.x/sail) for local developme
 Install PHP dependencies:
 
 ```sh
-composer install
+sail composer install
 ```
 
 Install Node dependencies:
@@ -70,7 +71,7 @@ Run JavaScript dev server:
 sail yarn dev
 ```
 
-## 🛠️ Setup
+## 🛠️ Configuration
 
 Copy `.env.example` as `.env` and update environment variables as needed.
 

@@ -7,7 +7,7 @@
         "lint": "eslint ./resources/js/**/*.{js,ts,vue}"
     },
     "engines": {
-        "node": "20.11.1"
+        "node": "20.17.0"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.3",
@@ -19,12 +19,15 @@
         "laravel-vite-plugin": "^0.7.5",
         "postcss": "^8.4.24",
         "tailwindcss": "^3.3.2",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.3.0",
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@meilisearch/instant-meilisearch": "^0.13.3",
+        "@meilisearch/instant-meilisearch": "^0.20.0",
         "@vueuse/core": "^10.2.1",
         "jenesius-vue-modal": "^1.11.2",
+        "meilisearch": "^0.42.0",
         "vue": "^3.3.4",
         "vue-instantsearch": "4.17.0"
     },

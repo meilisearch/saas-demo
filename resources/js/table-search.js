@@ -3,12 +3,12 @@ import InstantSearch from 'vue-instantsearch/vue3/es'
 
 // Components
 import Meilisearch from './components/InstantsearchProvider.vue'
-import SearchBar from './components/organisms/SearchBar.vue'
-import SearchFilterMenu from './components/organisms/SearchFilterMenu.vue'
-import SearchSortBy from './components/organisms/SearchSortBy.vue'
-import DealList from './components/organisms/DealList.vue'
-import ContactList from './components/organisms/ContactList.vue'
-import CompanyList from './components/organisms/CompanyList.vue'
+import SearchBar from './components/tables/SearchBar.vue'
+import SearchFilterMenu from './components/tables/SearchFilterMenu.vue'
+import SearchSortBy from './components/tables/SearchSortBy.vue'
+import DealList from './components/tables/DealList.vue'
+import ContactList from './components/tables/ContactList.vue'
+import CompanyList from './components/tables/CompanyList.vue'
 
 const app = createApp({
   components: {

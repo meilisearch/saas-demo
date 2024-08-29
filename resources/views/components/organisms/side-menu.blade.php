@@ -3,29 +3,29 @@
 <div class="border-e flex h-screen flex-col justify-between bg-white">
     <div class="px-4 py-6">
         <nav aria-label="Main Nav" class="flex flex-col space-y-1">
-            <x-molecules.side-menu-item href="{{ route('deals.index') }}"
+            <x-side-menu-item href="{{ route('deals.index') }}"
                 is-active="{{ Route::currentRouteName() == 'deals.index' }}">
                 <x-slot:icon>
                     <x-ui.home-icon></x-ui.home-icon>
                 </x-slot:icon>
                 Deals
-            </x-molecules.side-menu-item>
+            </x-side-menu-item>
 
-            <x-molecules.side-menu-item href="{{ route('contacts.index') }}"
+            <x-side-menu-item href="{{ route('contacts.index') }}"
                 is-active="{{ Route::currentRouteName() == 'contacts.index' }}">
                 <x-slot:icon>
                     <x-ui.contact-icon></x-ui.contact-icon>
                 </x-slot:icon>
                 Contacts
-            </x-molecules.side-menu-item>
+            </x-side-menu-item>
 
-            <x-molecules.side-menu-item href="{{ route('companies.index') }}"
+            <x-side-menu-item href="{{ route('companies.index') }}"
                 is-active="{{ Route::currentRouteName() == 'companies.index' }}">
                 <x-slot:icon>
                     <x-ui.company-icon></x-ui.company-icon>
                 </x-slot:icon>
                 Companies
-            </x-molecules.side-menu-item>
+            </x-side-menu-item>
         </nav>
     </div>
 

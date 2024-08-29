@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Avatar from '../ui/Avatar.vue'
+import Avatar from '../ui/UserAvatar.vue'
 import UserIcon from '../ui/icons/micro/UserIcon.vue'
 import ResultCard from './ResultCard.vue'
 

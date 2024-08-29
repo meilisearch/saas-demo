@@ -26,12 +26,24 @@
 </head>
 
 <body id="app">
-    <x-layout user-avatar-url="{{ $userAvatarUrl }}" user-name="{{ $userName }}" user-email="{{ $userEmail }}"
-        other-user-email="{{ $otherUserEmail }}" organization-logo-url="{{ $organizationLogoUrl }}"
+    {{-- Header --}}
+    <x-navbar avatar-url="{{ $userAvatarUrl }}" organization-logo-url="{{ $organizationLogoUrl }}"
         organization-name="{{ $organizationName }}" meilisearch-token="{{ $meilisearchToken }}">
-        @yield('content')
+    </x-navbar>
 
-    </x-layout>
+    {{-- Side menu --}}
+    <div class="fixed bottom-0 left-0 top-16 w-64">
+        <x-side-menu user-avatar-url="{{ $userAvatarUrl }}" user-name="{{ $userName }}"
+            user-email="{{ $userEmail }}" other-user-email="{{ $otherUserEmail }}"></x-side-menu>
+    </div>
+
+    {{-- Content --}}
+    <div class="fixed bottom-0 right-0 left-64 top-16 overflow-y-auto">
+        <div class="relative">
+            @yield('content')
+        </div>
+    </div>
+
     @stack('scripts')
 </body>
 

@@ -3,7 +3,7 @@
 <header aria-label="Site Header" class="sticky top-0 z-10 bg-white shadow-sm">
     <div class="mx-auto flex h-16 items-center justify-between px-4">
         <div class="flex items-center gap-4">
-            <a href="#">
+            <a href="/">
                 <x-ui.organization-logo organization-name="{{ $organizationName }}" logo-url="{{ $organizationLogoUrl }}">
                 </x-ui.organization-logo>
             </a>

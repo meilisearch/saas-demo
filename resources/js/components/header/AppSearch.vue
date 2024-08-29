@@ -17,7 +17,7 @@ const handleOpen = async () => {
 
 // Keyboard shortcuts
 const keys = useMagicKeys()
-const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
+const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent)
 if (isMac) {
   whenever(keys['meta+K'], () => {
     handleOpen()

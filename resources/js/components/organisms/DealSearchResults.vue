@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
 import NoResults from '../atoms/NoResults.vue'
-import DealSearchResultsItem from '../molecules/DealSearchResultsItem.vue'
+import DealSearchResultsItem from '../header/DealCard.vue'
 const statusClass = (status: string) => {
   switch (status) {
     case 'won':

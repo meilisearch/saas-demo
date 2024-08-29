@@ -6,9 +6,9 @@ import type { SearchResponse } from 'meilisearch'
 import SearchInput from '../ui/SearchInput.vue'
 import SearchIcon from '../atoms/SearchIcon.vue'
 import SearchResetButton from '../atoms/SearchResetButton.vue'
-import CompanySearchResultsItem from '../molecules/CompanySearchResultsItem.vue'
-import ContactSearchResultsItem from '../molecules/ContactSearchResultsItem.vue'
-import DealSearchResultsItem from '../molecules/DealSearchResultsItem.vue'
+import CompanyCard from './CompanyCard.vue'
+import ContactCard from './ContactCard.vue'
+import DealCard from './DealCard.vue'
 import SearchModalLayout from './SearchModalLayout.vue'
 import { getStatusClass } from '../../utils'
 
@@ -68,12 +68,16 @@ watch(query, (value) => {
       </template>
 
       <div>
-        <ul class="">
+        <div>
+          Top result
+        </div>
+
+        <ul class="space-y-3">
           <li
             v-for="hit in results?.hits"
             :key="`${hit._federation?.indexUid}-${hit.id}`"
           >
-            <CompanySearchResultsItem
+            <CompanyCard
               v-if="hit._federation?.indexUid === 'companies'"
               :company-name="hit.name"
               :company-logo-url="`https://logo.clearbit.com/${hit.url}`"
@@ -83,20 +87,15 @@ watch(query, (value) => {
               <template #name>
                 {{ hit.name }}
               </template>
-            </CompanySearchResultsItem>
-            <ContactSearchResultsItem
+            </CompanyCard>
+            <ContactCard
               v-else-if="hit._federation?.indexUid === 'contacts'"
               :contact-avatar-url="`https://api.dicebear.com/6.x/initials/svg?seed=${hit.name}`"
+              :contact-name="hit.name"
+              :contact-email="hit.email"
               :href="`/contacts/${hit.id}`"
-            >
-              <template #name>
-                {{ hit.name }}
-              </template>
-              <template #email>
-                {{ hit.email }}
-              </template>
-            </ContactSearchResultsItem>
-            <DealSearchResultsItem
+            />
+            <DealCard
               v-else-if="hit._federation?.indexUid === 'deals'"
               :href="`/deals/${hit.id}`"
             >
@@ -116,7 +115,7 @@ watch(query, (value) => {
                   style: 'currency', currency: 'USD',
                 }).format(hit.value) }}
               </template>
-            </DealSearchResultsItem>
+            </DealCard>
           </li>
         </ul>
       </div>

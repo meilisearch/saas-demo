@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { AisIndex, AisInfiniteHits, AisHighlight } from 'vue-instantsearch/vue3/es'
-import CompanySearchResultsItem from '../molecules/CompanySearchResultsItem.vue';
+import CompanySearchResultsItem from '../header/CompanyCard.vue';
 const firstThreeItems = (items: any[]) => items.slice(0, 3)
 </script>
 

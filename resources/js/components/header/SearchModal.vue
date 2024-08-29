@@ -4,8 +4,8 @@ import { Meilisearch } from 'meilisearch'
 import type { SearchResponse } from 'meilisearch'
 
 import SearchInput from '../ui/SearchInput.vue'
-import SearchIcon from '../atoms/SearchIcon.vue'
-import SearchResetButton from '../atoms/SearchResetButton.vue'
+import SearchIcon from '../ui/SearchIcon.vue'
+import SearchResetButton from '../ui/SearchResetButton.vue'
 import CompanyCard from './CompanyCard.vue'
 import ContactCard from './ContactCard.vue'
 import DealCard from './DealCard.vue'
@@ -16,7 +16,6 @@ const props = defineProps<{
   apiKey: string,
 }>()
 
-// Meilisearch client
 const meilisearch = new Meilisearch({
   host: import.meta.env.VITE_MEILISEARCH_HOST,
   apiKey: props.apiKey,
@@ -25,8 +24,6 @@ const meilisearch = new Meilisearch({
 // Search
 const results = ref<SearchResponse|null>(null)
 const search = async (query: string) => {
-  console.log('search', query)
-
   results.value = await meilisearch.multiSearch({
     federation: {},
     queries: ['companies', 'contacts', 'deals'].map(indexName => ({
@@ -35,8 +32,6 @@ const search = async (query: string) => {
       attributesToHighlight: ['name'],
     })),
   })
-
-  console.log('results', results.value)
 }
 
 // Query

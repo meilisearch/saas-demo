@@ -24,7 +24,7 @@ Read our [Complete guide to full-text search with Laravel](https://blog.meilisea
 
 This SaaS demo uses the following:
 
-- [Multi-search](https://www.meilisearch.com/docs/reference/api/multi_search?utm_campaign=saas-demo&utm_source=github&utm_medium=readme) (search across multiple indexes)
+- [Federated search](https://www.meilisearch.com/docs/reference/api/multi_search?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)
 - [Multi-tenancy](https://www.meilisearch.com/docs/learn/security/tenant_tokens?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)
 - [Filtering](https://www.meilisearch.com/docs/learn/fine_tuning_results/filtering?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)
 - [Sorting](https://www.meilisearch.com/docs/learn/fine_tuning_results/sorting?utm_campaign=saas-demo&utm_source=github&utm_medium=readme)

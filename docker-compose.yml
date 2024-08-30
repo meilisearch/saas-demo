@@ -77,12 +77,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - wget
-                - '--no-verbose'
-                - '--spider'
-                - 'http://localhost:7700/health'
+            test: set -o pipefail;curl -fsS http://localhost:7700/health | grep -q '{"status":"available"}'
             retries: 3
             timeout: 5s
 networks:

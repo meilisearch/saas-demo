@@ -7,6 +7,18 @@
 
     <title>{{ env('APP_NAME') }}</title>
 
+    @env('production')
+    <!-- gtag consent -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -14,6 +26,10 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-TNSCGVBH');</script>
     <!-- End Google Tag Manager -->
+    <!-- Start cookieyes banner -->
+    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/0ec5a8e516eccaa724a461f6/script.js"></script>
+    <!-- End cookieyes banner -->
+    @endenv
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -28,7 +44,7 @@
     @vite('resources/css/app.css')
 
     @env('production')
-    <!-- Analytics -->
+    <!-- Fathom Analytics -->
     <script src="https://cdn.usefathom.com/script.js" data-site="QNBPJXIV" defer></script>
     @endenv
 </head>
